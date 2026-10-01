@@ -1,0 +1,2878 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="theme-2007">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>折页清</title>
+<meta name="description" content="把日子折进书页里。2007 年 5 月建的个人主页。">
+<meta name="theme-color" content="#f4f4ef">
+<!-- 分享到聊天工具时的预览。整站只有一个文件，没有外部图片，所以用 data: 的内联 SVG 当封面。 -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="折页清">
+<meta property="og:description" content="把日子折进书页里。一个 2007 年建的个人主页，2013 年后不再更新。">
+<meta property="og:image" content="data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20width%3D'1200'%20height%3D'630'%3E%3Crect%20width%3D'1200'%20height%3D'630'%20fill%3D'%23f4f4ef'%2F%3E%3Ctext%20x%3D'600'%20y%3D'300'%20font-family%3D'SimSun%2Cserif'%20font-size%3D'96'%20letter-spacing%3D'36'%20text-anchor%3D'middle'%20fill%3D'%233c4a5a'%3E%E6%8A%98%E9%A1%B5%E6%B8%85%3C%2Ftext%3E%3Ctext%20x%3D'600'%20y%3D'372'%20font-family%3D'SimSun%2Cserif'%20font-size%3D'28'%20text-anchor%3D'middle'%20fill%3D'%238a8a80'%3E%E6%8A%8A%E6%97%A5%E5%AD%90%E6%8A%98%E8%BF%9B%E4%B9%A6%E9%A1%B5%E9%87%8C%3C%2Ftext%3E%3C%2Fsvg%3E">
+<!-- 这个站是一个网页文件。所有样式、脚本、图片、声音都在里面，离线打开也能看。 -->
+<style>
+/* ============================================================
+   《折页清》 — 切片版样式
+   原则：看起来像 2000 年代个人主页，不像游戏。
+   四套时代主题：e2007（表格时代）/ e2009（停更前）/ e2011（代管期）
+   无障碍：无闪烁、动效可关、字号可调、对比可调
+   ============================================================ */
+
+:root{
+  --bg:#f4f4ef;      --fg:#222;        --dim:#8a8a80;    --dimmer:#b9b9b0;
+  --link:#1d4d8f;    --alink:#8f1d1d;   --vlink:#5b3a8f;
+  --line:#c9c9bf;    --box:#fff;        --hdr:#3c4a5a;
+  --fs:13px;         --lh:1.75;
+}
+html.theme-2009{ --bg:#eef1f2; --fg:#1e2226; --link:#1f5c7a; --vlink:#4a4a8f; --line:#bfc7cb; --hdr:#2b3a44; }
+html.theme-2011{ --bg:#f6f7f4; --fg:#26282a; --link:#2a6b4f; --vlink:#5a4a7a; --line:#d2d5cc; --hdr:#33463c;
+                 --fs:14px; --lh:1.85; }
+html.fs-l{ --fs:15px; } html.fs-xl{ --fs:17px; --lh:1.95; }
+html.contrast{ --bg:#fff; --fg:#000; --dim:#555; --dimmer:#777; --link:#00379c; --line:#888; }
+html.no-anim *,html.no-anim *::before,html.no-anim *::after{ animation:none !important; transition:none !important; }
+html.no-flash .blink{ animation:none !important; }
+
+*{ box-sizing:border-box; }
+html,body{ margin:0; padding:0; }
+body{
+  background:var(--bg); color:var(--fg);
+  font-family:"SimSun","宋体","Songti SC",Georgia,"Times New Roman",serif;
+  font-size:var(--fs); line-height:var(--lh);
+  -webkit-text-size-adjust:100%;
+  padding:0 0 40px;
+  transition:background .2s linear,color .2s linear;
+}
+img{ border:0; max-width:100%; height:auto; display:block; }
+a{ color:var(--link); text-decoration:underline; }
+a:visited{ color:var(--vlink); }
+a:hover{ color:var(--alink); }
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{
+  outline:2px dotted var(--alink); outline-offset:1px;
+}
+hr{ border:0; border-top:1px solid var(--line); margin:12px 0; }
+p{ margin:0 0 .8em; }
+h1,h2,h3,h4{ font-weight:normal; margin:0 0 .5em; }
+h1{ font-size:1.5em; letter-spacing:.12em; }
+h2{ font-size:1.15em; border-left:3px solid var(--line); padding-left:7px; margin-top:1.4em; }
+h3{ font-size:1em; color:var(--dim); }
+h4{ font-size:1em; }
+small,.small{ font-size:.86em; }
+.dim{ color:var(--dim); }
+.dimmer{ color:var(--dimmer); }
+.tiny{ font-size:.8em; }
+.mono{ font-family:Consolas,"Courier New",monospace; }
+.nowrap{ white-space:nowrap; }
+.center{ text-align:center; }
+.right{ text-align:right; }
+.hide{ display:none !important; }
+.skip{ position:absolute; left:-9999px; }
+.skip:focus{ position:static; display:inline-block; padding:3px 6px; background:#ffd; }
+
+/* ---------- 页面骨架：老式居中表格观感 ---------- */
+#site{ max-width:790px; margin:0 auto; padding:0 10px; }
+@media (max-width:820px){ #site{ max-width:100%; padding:0 8px; } }
+
+#masthead{ padding:16px 0 6px; text-align:center; }
+#masthead .logo{ font-size:2em; letter-spacing:.42em; text-indent:.42em; color:var(--hdr); }
+#masthead .tag{ color:var(--dim); font-size:.92em; margin-top:2px; }
+#masthead .tagline{ margin-top:6px; color:var(--dim); }
+
+/* 导航：细边框小链接 */
+#nav{ border-top:1px solid var(--line); border-bottom:1px solid var(--line);
+      padding:5px 2px; text-align:center; margin:8px 0 0; line-height:2.1; }
+#nav a{ margin:0 6px; white-space:nowrap; }
+#nav .sep{ color:var(--dimmer); }
+
+#crumb{ color:var(--dim); font-size:.86em; padding:8px 1px 0; }
+#main{ background:var(--box); border:1px solid var(--line); padding:16px 18px 22px; margin-top:8px; }
+html.theme-2009 #main{ border-style:solid; }
+html.theme-2011 #main{ border:0; background:transparent; padding:10px 2px 22px; }
+
+#footer{ color:var(--dim); font-size:.86em; text-align:center; padding:14px 4px 0; line-height:1.9; }
+#footer .byline{ font-size:9px; color:var(--dimmer); letter-spacing:.02em; }
+#footer .byline a{ color:var(--dimmer); }
+#footer .stamp{ font-size:9px; color:var(--dimmer); }
+
+/* ---------- 首页 ---------- */
+.homelist{ margin:2px 0 10px; }
+.homelist li{ margin:0 0 .35em; }
+.homelist ul{ list-style:none; margin:0; padding:0; }
+.homecol{ margin-top:14px; }
+.hello{ margin:6px 0 14px; }
+.welcome-note{ background:#fbfbf3; border:1px dashed var(--line); padding:9px 11px; color:var(--dim); }
+html.theme-2011 .welcome-note{ background:transparent; border:0; border-left:2px solid var(--line);
+  padding:2px 0 2px 11px; }
+
+/* ---------- 日记 ---------- */
+.entry{ margin:0 0 20px; padding-bottom:14px; border-bottom:1px dotted var(--line); }
+.entry:last-child{ border-bottom:0; }
+.entry .meta{ color:var(--dim); font-size:.88em; margin-bottom:.35em; }
+.entry .meta .d{ color:var(--fg); }
+.entry .tagline{ color:var(--dim); }
+.entry .body{ }
+.entry .notes{ margin-top:.5em; color:var(--dim); font-size:.88em; }
+.monthhead{ margin-top:1.2em; }
+.yearlist{ line-height:2.2; }
+.count{ color:var(--dim); font-size:.88em; }
+
+/* 记录条目（非日记，列表式） */
+.rec{ margin:0 0 .55em; padding-left:1.2em; text-indent:-1.2em; }
+.rec .dt{ color:var(--dim); margin-right:.5em; }
+
+/* ---------- 相册 ---------- */
+.album{ display:flex; flex-wrap:wrap; gap:14px; margin-top:10px; }
+.shot{ width:222px; }
+.shot .frame{ background:#e9e9e2; border:1px solid var(--line); padding:4px; }
+.shot canvas{ width:100%; height:auto; display:block; background:#ddd; }
+.shot .cap{ color:var(--dim); font-size:.84em; margin-top:3px; line-height:1.6; }
+.shot .fn{ font-family:Consolas,monospace; font-size:.76em; color:var(--dimmer); }
+.shot figcaption a.zoom{ font-size:.82em; }
+@media (max-width:560px){ .shot{ width:100%; } }
+
+.polar{ display:flex; flex-wrap:wrap; gap:12px; }
+
+/* ---------- 音乐 ---------- */
+.track{ margin:0 0 14px; padding-bottom:10px; border-bottom:1px dotted var(--line); }
+.track .t{ }
+.track .by{ color:var(--dim); font-size:.88em; }
+.track .info{ color:var(--dimmer); font-size:.82em; font-family:Consolas,monospace; }
+.track.broken .t{ color:var(--dimmer); }
+meter.meter{ width:190px; height:11px; }
+.wave{ border:1px solid var(--line); background:#fafafa; width:100%; max-width:420px; height:52px; }
+
+/* ---------- 留言板 ---------- */
+.gbook{ margin-top:10px; }
+.gm{ margin:0 0 13px; padding-bottom:9px; border-bottom:1px dotted var(--line); }
+.gm .hd{ color:var(--dim); font-size:.88em; }
+.gm .hd b{ color:var(--fg); font-weight:normal; }
+.gm .tx{ margin-top:2px; white-space:pre-wrap; }
+.gm.reply{ margin-left:22px; border-bottom:0; padding-bottom:2px; }
+.gm.anon .hd b{ color:var(--dim); }
+.gform{ margin-top:16px; border-top:1px solid var(--line); padding-top:10px; }
+.gform label{ display:block; color:var(--dim); font-size:.88em; margin:6px 0 2px; }
+.gform input[type=text],.gform textarea{
+  font-family:inherit; font-size:var(--fs); background:#fff; color:#000;
+  border:1px solid var(--line); padding:3px 5px; width:100%; max-width:460px; }
+.gform textarea{ height:70px; resize:vertical; }
+.gform button,.btn{
+  font-family:inherit; font-size:var(--fs); background:#eeeee6; color:var(--fg);
+  border:1px solid var(--line); padding:2px 12px; cursor:pointer; }
+.gform button:hover,.btn:hover{ background:#e2e2d6; }
+
+/* ---------- 搜索 ---------- */
+.sbox{ margin:10px 0 4px; }
+.sbox input[type=text]{ font-family:inherit; font-size:var(--fs); border:1px solid var(--line);
+  background:#fff; color:#000; padding:3px 6px; width:62%; max-width:340px; }
+.sres{ margin-top:14px; }
+.sitem{ margin:0 0 12px; padding-bottom:8px; border-bottom:1px dotted var(--line); }
+.sitem .st{ }
+.sitem .su{ font-family:Consolas,monospace; font-size:.82em; color:var(--dim); }
+.sitem .sx{ color:var(--dim); font-size:.9em; }
+.sitem del{ color:var(--dimmer); }
+.deleted{ color:var(--dimmer); }
+.hit{ background:#ffefb0; }
+html.contrast .hit{ background:#ffe97a; }
+
+/* ---------- 存档 / 后台 / 日志 ---------- */
+.archrow{ line-height:2.1; }
+.termbox{ font-family:Consolas,"Courier New",monospace; font-size:.92em;
+  background:#f2f2ec; border:1px solid var(--line); padding:10px 12px; white-space:pre-wrap; line-height:1.7; }
+html.contrast .termbox{ background:#fff; }
+.filelist{ font-family:Consolas,monospace; font-size:.9em; line-height:2; }
+.filelist .sz{ color:var(--dimmer); }
+.warn{ color:#8a5a12; }
+html.contrast .warn{ color:#7a4a00; }
+
+/* ---------- 遮罩：照片放大 ---------- */
+#viewer{ position:fixed; inset:0; background:rgba(20,20,20,.86); z-index:60;
+  display:flex; align-items:center; justify-content:center; padding:18px; }
+#viewer .inner{ background:var(--box); border:1px solid var(--line); padding:8px; max-width:96vw; max-height:94vh; overflow:auto; }
+#viewer canvas{ max-width:92vw; max-height:76vh; width:auto; }
+#viewer .vcap{ color:var(--dim); font-size:.86em; margin-top:6px; max-width:92vw; }
+#viewer .vbar{ text-align:right; margin-top:6px; }
+
+/* ---------- 辅助面板（来源 / 无障碍 / 存档） ---------- */
+#panel,#dbg{ position:fixed; right:0; bottom:0; z-index:70; max-height:86vh; overflow:auto;
+  background:var(--box); border:1px solid var(--line); padding:10px 12px;
+  width:340px; max-width:96vw; font-size:.9em; line-height:1.75; }
+#dbg{ left:0; right:auto; width:420px; font-family:Consolas,monospace; font-size:.82em; }
+#dbg h3{ margin-top:12px; color:var(--fg); }
+#dbg pre{ white-space:pre-wrap; margin:2px 0; color:var(--dim); }
+#panel h3,#dbg h3{ font-size:.95em; border:0; padding:0; }
+#panel .row{ margin:5px 0; }
+#panel .x,#dbg .x{ float:right; }
+#panel label{ display:block; margin:3px 0; cursor:pointer; }
+.tagbar{ color:var(--dim); font-size:.86em; }
+.statechip{ font-family:Consolas,monospace; font-size:.78em; color:var(--dim); }
+
+/* 小工具按钮条（右下角，克制、不游戏化） */
+#tools{ position:fixed; right:8px; bottom:8px; z-index:50; font-size:.82em; }
+#tools a{ color:var(--dim); margin-left:8px; text-decoration:none; border-bottom:1px dotted var(--line); }
+#tools a:hover{ color:var(--alink); }
+
+/* 声音图标（2007 年个人站的审美） */
+#snd{ position:fixed; right:8px; bottom:26px; z-index:50; }
+#snd a{ color:var(--dimmer); text-decoration:none; font-size:.8em; }
+
+.blink{ animation:bl 1.15s steps(1,end) infinite; }
+@keyframes bl{ 0%,49%{opacity:1} 50%,100%{opacity:.25} }
+
+/* 首版 2007 的"表格感"细节 */
+.e2007 .boxed{ border:1px solid var(--line); padding:8px 10px; background:#fbfbf5; }
+.e2007 .hdrbar{ background:#dfe4e8; border:1px solid var(--line); padding:3px 8px; color:#33404d; }
+.marq{ border:1px solid var(--line); background:#fdf7e3; padding:3px 8px; color:#7a5a12; font-size:.9em; }
+
+/* 打印（有人真的会打印旧网页） */
+@media print{ #tools,#snd,#panel,#dbg{ display:none !important; } body{ background:#fff; } }
+
+</style>
+</head>
+<body>
+
+<a class="skip" href="#main">跳到正文</a>
+
+<div id="site">
+  <div id="masthead">
+    <div class="logo">折页清</div>
+    <div class="tag">把日子折进书页里</div>
+  </div>
+
+  <div id="nav" role="navigation" aria-label="站内导航">
+    <span class="dim small">（导航在脚本加载后出现）</span>
+  </div>
+
+  <div id="crumb" class="small"></div>
+
+  <div id="main" role="main">
+    <noscript>
+      <p>这个站需要浏览器打开脚本才能看。没有脚本的话，只能看到这一行。</p>
+      <p>（原站也是纯 HTML 的，但它至少还能看字。）</p>
+    </noscript>
+  </div>
+
+  <div id="footer"></div>
+</div>
+
+<script>
+/* 《折页清》 —— 一个网页文件。
+   全部内容（样式、脚本、图片、声音）都在这里面。
+   站上不做任何网络请求；图片在浏览器里用 canvas 现画，声音用 WebAudio 现合成。
+   构建时间：2026-10-01 13:50 */
+(function(){
+'use strict';
+/* ===== data/00-core.js ===== */
+/* ============================================================
+   《折页清》 — 常量与站点元信息（切片版：2007-05 ~ 2009-11）
+   GAME_DATA 与程序逻辑分离：本文件只有数据。
+   ============================================================ */
+
+/* ---- 站点 ---- */
+const SITE = {
+  name: '折页清',
+  oldname: '折页',
+  domain: 'zheyue.pages.dev',
+  tagline: '把日子折进书页里',
+  founded: '2007-05-20',
+  lastupd: '2013-06-02',
+  stopline: '本站不再更新。谢谢来过的人。',
+  counterBase: 10427
+};
+
+/* ---- 人物（全部虚构）---- */
+const PEOPLE = {
+  lu: {
+    id:'lu', name:'陆知遥', aka:['迟夏','拆页'], born:'1987-08-09',
+    role:'站点原作者', era:'2007–2009',
+    traits:'嘴皮子比笔头勤，爱拍不爱写，报喜不报忧，错别字不改',
+    style:['短句多','口语','爱用"哈"和 :)','标点随意','常用词：还行、就那样、有点意思']
+  },
+  gu: {
+    id:'gu', name:'谷行', aka:['小满'], born:'1988-01-09',
+    role:'留言板常客 → 站点代管者', era:'2007 起留言，2010 起更新',
+    traits:'字好看，话少，句子克制，写长句，不打错别字',
+    style:['句子工整','标点规范','善用分号与破折号','句尾偶带"你晓得的"','常用词：其实、倒是、也就是']
+  },
+  lin:{ id:'lin', name:'林岸', role:'高中同学', note:'2007–2009 常客，2010 后消失' },
+  zhou:{ id:'zhou', name:'周维明', aka:['老周'], role:'广告公司同事', note:'2008 一起跑过客户' },
+  ding:{ id:'ding', name:'阿町', role:'2010 年后的新访客', note:'不认识陆知遥' }
+};
+
+/* ---- 更新日志（真实站长会写的那种）---- */
+const LOG = [
+  { d:'2007-05-20', t:'建站。旧首页存档在 /old/，懒得删。' },
+  { d:'2007-06-01', t:'改了一下表格，好像还是歪的。' },
+  { d:'2007-06-18', t:'加了相册。图压得有点狠，凑合看。' },
+  { d:'2007-08-11', t:'留言板换了个免费的，之前的太丑。' },
+  { d:'2007-09-02', t:'加了音乐页。上传老失败，一首歌传了六遍。' },
+  { d:'2007-11-03', t:'做了个快照，怕以后没了。' },
+  { d:'2008-02-14', t:'友情链接页重写了。' },
+  { d:'2008-05-12', t:'今天不写。' },
+  { d:'2008-10-18', t:'音乐页那首歌删了，重传了一版。' },
+  { d:'2009-01-20', t:'换了个博客程序，不过最后还是用回这个。' },
+  { d:'2009-03-11', t:'最近有点忙。' },
+  { d:'2009-11-08', t:'把 08 年那几篇删了。留个快照就行。' },
+  { d:'2010-03-02', t:'改版。表格换成 div，眼睛舒服点。' },
+  { d:'2012-04-12', t:'域名的注册人改成谷行了，续费方便。' },
+  { d:'2013-06-02', t:'本站不再更新。谢谢来过的人。' }
+];
+
+/* ---- 日志里那条最关键的备注（P4 线索）---- */
+const SNAPSHOT_CLUE = '做了个快照，怕以后没了。';
+
+/* ---- 站内 404 文案（一定要像真的）---- */
+const NOTFOUND = {
+  title:'找不到页面',
+  lines:[
+    '这条路径没有快照。',
+    '可能是地址打错了，也可能是这里本来就没放过东西。',
+    '（本站 2013 年后不再更新，很多东西都没了。）'
+  ]
+};
+
+/* ===== data/10-diary.js ===== */
+/* ============================================================
+   《折页清》 — 日记数据
+   切片范围：2007-05 ~ 2008-07 与 2009-01 ~ 2009-03
+   手感规范（重要，R3 反转依赖它）：
+     陆知遥：短句、口语、"哈"、:) 、标点随意、偶有错别字
+     谷行（2010 后）：句子工整、标点规范、不打错别字 → 切片里不出现
+   ============================================================ */
+
+/* 日记。id 用于搜索与链接；del=1 表示 2009-11 被删（仅档案/搜索可见） */
+const DIARY = [
+  /* ---------- 2007-05 ---------- */
+  { id:'d20070520', d:'2007-05-20', w:'周日', title:'建站',
+    body:'搞了一下午，终于能打开了。\n域名一年五十块，肉疼。\n模板是网上扒的，颜色丑，回头改。' },
+  { id:'d20070522', d:'2007-05-22', title:'没睡好',
+    body:'宿舍有人打呼。三点醒了一次，五点又醒。\n上午的课我没去。' },
+  { id:'d20070528', d:'2007-05-28', title:'相机没买成',
+    body:'网上看了一台二手的，两百八，被人抢先了。\n有点烦。' },
+
+  /* ---------- 2007-06 ---------- */
+  { id:'d20070601', d:'2007-06-01', title:'改版',
+    body:'把表格改了下，还是歪的。浏览器不一样显示也不一样，烦。' },
+  { id:'d20070609', d:'2007-06-09', title:'下雨',
+    body:'下了一天。哪也没去，在宿舍躺着看天花板。\n晚上吃了泡面。' },
+  { id:'d20070615', d:'2007-06-15', title:'考完了',
+    body:'最后一门考完。不知道过没过，随缘。\n晚上跟林岸他们去吃了串串，喝了点。' },
+  { id:'d20070616', d:'2007-06-16', title:'头疼',
+    body:'昨晚喝多了。今天一整天都是废的。\n以后不这么喝了。' },
+  { id:'d20070618', d:'2007-06-18', title:'相册',
+    body:'加了个相册页。压图压得有点狠，放大全是格子。\n凑合看吧，反正也没人看。' },
+  { id:'d20070623', d:'2007-06-23', title:'放假前',
+    body:'宿舍楼里开始有人搬东西。走廊里全是纸箱子的味道。' },
+
+  /* ---------- 2007-07 ---------- */
+  { id:'d20070702', d:'2007-07-02', title:'热',
+    body:'热得睡不着。风扇吹出来的风是热的。\n凌晨两点下楼买了根冰棍。' },
+  { id:'d20070708', d:'2007-07-08', title:'一个人',
+    body:'室友都回家了，一个人待着挺好的。\n想干嘛干嘛。' },
+  { id:'d20070714', d:'2007-07-14', title:'图书馆',
+    body:'图书馆空调好。在那坐了一下午，什么也没看。' },
+  { id:'d20070721', d:'2007-07-21', title:'傍晚',
+    body:'傍晚去了江边，水比平时浑。\n有人拿喇叭在喊什么，扩音器坏了，声音是断的。' },
+  { id:'d20070727', d:'2007-07-27', title:'想买书',
+    body:'看中一本摄影的，六十八。\n站那翻了二十分钟，最后没买。' },
+
+  /* ---------- 2007-08 ---------- */
+  { id:'d20070802', d:'2007-08-02', title:'无事',
+    body:'一天没出门。' },
+  { id:'d20070806', d:'2007-08-06', title:'等待',
+    body:'新买的相机还在路上，急。\n一天查了五次快递。' },
+  { id:'d20070809', d:'2007-08-09', title:'生日',
+    body:'我生日。吃了碗面，没了。',
+    notes:'评论区后来有人提起这一天。' },
+  { id:'d20070811', d:'2007-08-11', title:'留言板',
+    body:'留言板换了个免费的。之前的太丑，一直懒得动。\n这个能用了，虽然边上有个别人的广告。' },
+  { id:'d20070812', d:'2007-08-12', title:'凉面',
+    body:'学校门口凉面涨价了，五毛。\n老板说肉价涨了。我看他碗里肉还是那几片。' },
+  { id:'d20070814', d:'2007-08-14', title:'河边',
+    body:'在河边坐到七点，蚊子太多。\n被咬了一腿包。拍了几张，都不太行。',
+    photos:['river_0714.jpg','river_0715.jpg','river_0716.jpg'],
+    notes:'更新完这条就下线了。' },
+  { id:'d20070819', d:'2007-08-19', title:'到了',
+    body:'相机到了。二手的，快门有点黏，但能用。\n晚上试了一下，图太暗。参数没搞懂。' },
+
+  /* ---------- 2007-09 ---------- */
+  { id:'d20070902', d:'2007-09-02', title:'音乐页',
+    body:'音乐页弄好了。传一首歌传了六遍，最后一遍成功的时候我对着屏幕鼓了个掌，还好宿舍没人。' },
+  { id:'d20070915', d:'2007-09-15', title:'有人留言',
+    body:'小满留言说我拍的河跟她家那边差不多。\n我回了句"那你也拍张来看看"，她说她没有相机。\n她说话挺好玩的，不像网上那些人。' },
+
+  /* ---------- 2007-10 ---------- */
+  { id:'d20071003', d:'2007-10-03', title:'国庆',
+    body:'没回家，太远，票太贵。\n在城里走了一天，走到脚底起泡。' },
+  { id:'d20071021', d:'2007-10-21', title:'老周',
+    body:'老周说我写文案像写日记。我说本来就是。' },
+
+  /* ---------- 2007-11 ---------- */
+  { id:'d20071103', d:'2007-11-03', title:'快照',
+    body:'做了个快照，怕以后没了。\n其实也没什么东西，就是怕哪天服务器炸了什么都不剩。' },
+  { id:'d20071124', d:'2007-11-24', title:'冷',
+    body:'天冷了。宿舍暖气不太行。\n买了件羽绒服，深灰色，二百八。' },
+
+  /* ---------- 2007-12 ---------- */
+  { id:'d20071209', d:'2007-12-09', title:'林岸',
+    body:'林岸说他要去北京。\n我说去吧。其实挺羡慕的。' },
+  { id:'d20071224', d:'2007-12-24', title:'平安夜',
+    body:'平安夜，一个人在宿舍煮面。\n外面很吵。加了个鸡蛋，算是过节了。' },
+
+  /* ---------- 2008-01 ~ 04 ---------- */
+  { id:'d20080101', d:'2008-01-01', title:'新年',
+    body:'新年。没什么感觉，就是在网吧待到了十二点。' },
+  { id:'d20080206', d:'2008-02-06', title:'除夕',
+    body:'回家了。我妈说我瘦了。\n其实是她半年没见我。' },
+  { id:'d20080302', d:'2008-03-02', title:'回学校',
+    body:'回学校了。火车上站了七个小时。' },
+  { id:'d20080314', d:'2008-03-14', title:'我爸',
+    body:'我爸打电话问我毕业的事。我说再看看。\n其实没想好。' },
+  { id:'d20080409', d:'2008-04-09', title:'实习',
+    body:'开始实习。小广告公司，一共四个人。\n老板姓陈，抽烟抽得很凶，人不坏。' },
+
+  /* ---------- 2008-05 ---------- */
+  { id:'d20080512', d:'2008-05-12', title:'今天不写',
+    body:'今天不写。' },
+  { id:'d20080513', d:'2008-05-13', title:'写一下',
+    body:'昨天下午我在白果林那边，桌子晃了两下，我以为是谁在推。\n后来大家都跑到街上。手机打不通。\n今天能打通了。她没事。',
+    notes:'评论区只留了一条。' },
+  { id:'d20080520', d:'2008-05-20', title:'睡不好',
+    body:'这段时间睡不好，总觉得地在动。\n其实没动。' },
+
+  /* ---------- 2008-06 ~ 07 ---------- */
+  { id:'d20080620', d:'2008-06-20', title:'搬东西',
+    body:'学校让搬宿舍。东西比我想的多。\n相机、三脚架、一箱书、两件没穿过的衬衫。' },
+  { id:'d20080701', d:'2008-07-01', title:'租房',
+    body:'租了间房，白果林往里走，二楼，五百五。\n没有空调，有台风扇。\n房东说水电另算。' },
+
+  /* ---------- 2008-10（关系线，全篇不点明）---------- */
+  { id:'d20081014', d:'2008-10-14', title:'走了一段',
+    body:'晚上下班一起去吃了面。\n她吃得慢，我已经吃完了她还有半碗。\n我就坐着看她吃。' },
+  { id:'d20081017', d:'2008-10-17', title:'二站台',
+    body:'送到第二站。\n她说不用送，我说顺路。其实不顺路。\n回来的路上我一直在想一句诗，想不出来，就先记四个字在这：\n\n二站台\n风从铁轨上来\n你说不用送\n我说顺路\n\n就这么四行，别的没了。',
+    notes:'这条写得比平时多。',
+    star:true },
+
+  /* ---------- 2009-01 ~ 03（站点停更前）---------- */
+  { id:'d20090120', d:'2009-01-20', title:'换程序',
+    body:'换了个博客程序，装了半天，最后还是用回这个。\n懒得折腾。' },
+  { id:'d20090215', d:'2009-02-15', title:'换号',
+    body:'换了手机号。\n群发了短信，不知道漏没漏人。' },
+  { id:'d20090302', d:'2009-03-02', title:'春天',
+    body:'楼下的树发芽了。拍了张，糊了。' },
+  { id:'d20090311', d:'2009-03-11', title:'忙',
+    body:'最近有点忙。',
+    notes:'之后很久没更新。' },
+
+  /* ---------- 被删的文章（2009-11 删除，仅档案/搜索可见）---------- */
+  { id:'d20080920', d:'2008-09-20', title:'写给未寄出的信', del:1,
+    body:'今天想到一件事。\n\n有些话写下来是为了寄出去，有些话写下来只是为了让它在纸上待一会儿。\n这封信属于后一种。\n\n写完了我就放进抽屉最下面。\n要是哪天有人翻到，希望他别笑我。',
+    notes:'2009-11-08 删除。快照里还有。' },
+  { id:'d20081005', d:'2008-10-05', title:'半夜', del:1,
+    body:'三点半醒的。\n楼上有个人在走来走去，走了很久。\n我没起来看。' },
+  { id:'d20081112', d:'2008-11-12', title:'窗', del:1,
+    body:'下午从公司出来，天已经黑了。\n抬头看了一眼，四楼那扇窗亮着。\n我就站那看了一会儿，然后走了。',
+    notes:'2009-11-08 删除。' }
+];
+
+/* 月归档：哪些月份在切片里有内容 */
+const DIARY_MONTHS = (function(){
+  const m = {};
+  DIARY.forEach(function(e){
+    if(e.del) return;
+    const k = e.d.slice(0,4) + '-' + e.d.slice(5,7);
+    (m[k] = m[k] || []).push(e.id);
+  });
+  return m;
+})();
+
+/* ===== data/20-content.js ===== */
+/* ============================================================
+   《折页清》 — 留言板 / 音乐 / 相册 / 友链 数据
+   ============================================================ */
+
+/* ------------------------------------------------------------------
+   留言板
+   by: 'lu' | 'gu' | 'lin' | 'zhou' | 'ding' | 'anon' | 'me'
+   rep: 站长回复（切片里回复者一律是 迟夏 = 陆知遥本人）
+   t:   'rep' 回复样式
+   ------------------------------------------------------------------ */
+const GUEST = {
+  /* 2007 版留言板（免费第三方板）*/
+  g2007: [
+    { d:'2007-08-14 21:03', by:'gu', name:'小满',
+      tx:'你拍的河跟我家那边差不多。' },
+    { d:'2007-08-14 21:40', by:'lu', name:'迟夏', t:'rep',
+      tx:'那你也拍张来看看。' },
+    { d:'2007-08-14 22:11', by:'gu', name:'小满', t:'rep',
+      tx:'我没有相机啊。' },
+    { d:'2007-08-15 12:20', by:'lin', name:'林岸',
+      tx:'你什么时候把上次的照片发我。' },
+    { d:'2007-08-15 19:02', by:'lu', name:'迟夏', t:'rep',
+      tx:'明天，明天一定。' },
+    { d:'2007-08-19 22:47', by:'gu', name:'小满',
+      tx:'新相机是什么牌子？' },
+    { d:'2007-08-19 23:15', by:'lu', name:'迟夏', t:'rep',
+      tx:'佳能的，二手的，有点旧。快门有点黏。' },
+    { d:'2007-08-19 23:31', by:'gu', name:'小满', t:'rep',
+      tx:'能响就行。相机又不是拿来供着的。' },
+    { d:'2007-09-03 10:22', by:'lin', name:'林岸',
+      tx:'音乐页那首是你弹的？' },
+    { d:'2007-09-03 11:05', by:'lu', name:'迟夏', t:'rep',
+      tx:'嗯，弹错三个地方，懒得重录。' },
+    { d:'2007-09-15 20:40', by:'gu', name:'小满',
+      tx:'你今天那条写得挺好。就是最后那句有点用力了，你晓得的。',
+      note:'这句话后来在本站出现了很多次。' },
+    { d:'2007-11-03 23:50', by:'gu', name:'小满',
+      tx:'你说你做了快照，在哪？我看看。' },
+    { d:'2007-11-04 09:12', by:'lu', name:'迟夏', t:'rep',
+      tx:'在 /archive/，图多，加载慢。' },
+    { d:'2007-12-24 23:58', by:'gu', name:'小满',
+      tx:'平安夜快乐。加鸡蛋是对的。' },
+    { d:'2008-05-12 20:15', by:'gu', name:'小满',
+      tx:'……',
+      note:'只有两个点。' },
+    { d:'2008-05-13 01:06', by:'gu', name:'小满',
+      tx:'我在雅安，没事。你呢。' },
+    { d:'2008-05-13 01:20', by:'lu', name:'迟夏', t:'rep',
+      tx:'没事。手机下午一直打不通，刚看到。' },
+    { d:'2008-06-07 15:31', by:'lin', name:'林岸',
+      tx:'北京的楼比这边高，别的都差不多。' },
+    { d:'2008-10-19 23:12', by:'gu', name:'小满',
+      tx:'你昨天那条我看了三遍。诗写得不好，但后面那两句好。' },
+    { d:'2008-12-31 23:47', by:'gu', name:'小满',
+      tx:'明年见。' }
+  ],
+
+  /* 2009 版留言板（停更前，也是"现在"这一版的上一版）*/
+  g2009: [
+    { d:'2009-01-01 00:12', by:'gu', name:'小满', tx:'新年好。' },
+    { d:'2009-01-21 14:02', by:'lin', name:'林岸',
+      tx:'你那个程序换成功了没？我这边也在折腾。' },
+    { d:'2009-01-21 15:40', by:'lu', name:'迟夏', t:'rep',
+      tx:'换回去了。懒得弄。' },
+    { d:'2009-03-11 22:31', by:'gu', name:'小满',
+      tx:'你最近是不是很忙。' },
+    { d:'2009-04-02 19:55', by:'gu', name:'小满',
+      tx:'没事，你忙你的。' },
+    { d:'2009-06-18 21:10', by:'lin', name:'林岸', tx:'人呢？' },
+    { d:'2009-09-01 10:30', by:'gu', name:'小满',
+      tx:'快秋天了，河边的草该黄了。' },
+    { d:'2009-11-08 16:44', by:'lu', name:'迟夏',
+      tx:'把 08 年那几篇删了。留个快照就行。' },
+    { d:'2009-11-08 18:02', by:'gu', name:'小满',
+      tx:'哪几篇？' },
+    { d:'2009-12-31 23:59', by:'gu', name:'小满',
+      tx:'今年也过去了。' }
+  ],
+
+  /* 现在这一版（2012 之后）的留言板 —— 切片里露出的"第二只手" */
+  gNow: [
+    { d:'2010-03-04 11:20', by:'ding', name:'阿町',
+      tx:'换版式了？好看多了。之前那个我一直看不清字。' },
+    { d:'2010-03-04 20:41', by:'gu', name:'迟夏', t:'rep',
+      tx:'嗯，表格太挤。' },
+    { d:'2010-07-19 22:03', by:'lin', name:'林岸',
+      tx:'你什么时候回成都，一起吃个饭。' },
+    { d:'2010-07-20 09:15', by:'gu', name:'迟夏', t:'rep',
+      tx:'最近走不开，等闲了说。' },
+    { d:'2011-02-11 21:44', by:'zhou', name:'老周',
+      tx:'照片拿到了，谢了。你上次说的那家面馆我去吃了，味道还行。',
+      note:'那家面馆 2008 年就关了。' },
+    { d:'2011-02-12 08:30', by:'gu', name:'迟夏', t:'rep',
+      tx:'是那家吗，我记得招牌换过。' },
+    { d:'2011-04-08 19:26', by:'anon', name:'（匿名）',
+      tx:'你好，请问这个站是谁在维护？我几年前来过。' },
+    { d:'2011-04-09 10:02', by:'gu', name:'迟夏', t:'rep',
+      tx:'一直是我。' },
+    { d:'2011-09-23 23:31', by:'gu', name:'迟夏',
+      tx:'今天把相册整理了一下。有些照片放太久了，看着有点陌生。' },
+    { d:'2012-04-12 13:07', by:'gu', name:'迟夏',
+      tx:'域名的注册人改成我了，续费方便点。' },
+    { d:'2012-06-30 22:15', by:'gu', name:'迟夏',
+      tx:'有人认识这条线路沿线的站吗。照片在首页。' },
+    { d:'2013-03-19 00:41', by:'gu', name:'迟夏',
+      tx:'今年调到雅安了。' },
+    { d:'2013-06-02 23:58', by:'gu', name:'迟夏',
+      tx:'本站不再更新。谢谢来过的人。' }
+  ]
+};
+
+/* 留言板页脚（2007 年版才有，第三方免费板的广告位） */
+const GUEST_FOOT_2007 = '本站留言板由 免费留言本 v2.1 提供 · 广告位招租';
+
+/* ------------------------------------------------------------------
+   音乐
+   kind: 'synth' 可播放（WebAudio 运行时合成）/ 'broken' 文件损坏
+   ------------------------------------------------------------------ */
+const MUSIC = [
+  { id:'m01', page:'music2007', d:'2007-09-02', t:'雨声（Windows 录音机录的）',
+    by:'迟夏', kind:'synth', patch:'rain', dur:'0:03 循环', size:'41 KB',
+    note:'当年首页那个声音就是这个。' },
+  { id:'m02', page:'music2007', d:'2007-09-02', t:'夜行（弹唱）',
+    by:'迟夏', kind:'synth', patch:'guitar', dur:'1:12', size:'1.6 MB',
+    note:'弹错三个地方，懒得重录。' },
+  { id:'m03', page:'music2007', d:'2007-09-16', t:'九月（哼唱）',
+    by:'迟夏', kind:'synth', patch:'hum', dur:'0:58', size:'1.2 MB',
+    note:'词是抄的，曲是乱的。' },
+
+  { id:'m04', page:'music2008', d:'2008-10-17', t:'二站台',
+    by:'迟夏', kind:'synth', patch:'guitar', dur:'2:04', size:'3.1 MB',
+    note:'那天录的。背景里有公交车进站的声音，没剪掉。' },
+  { id:'m05', page:'music2008', d:'2008-11-12', t:'半夜三点半',
+    by:'迟夏', kind:'synth', patch:'hum', dur:'1:47', size:'2.6 MB',
+    note:'楼上那个人还在走。' },
+
+  { id:'m06', page:'music2009', d:'2009-01-05', t:'雨声',
+    by:'迟夏', kind:'synth', patch:'rain', dur:'0:03 循环', size:'41 KB',
+    note:'和 07 年那个是同一个文件，重新传了一次。' },
+  { id:'m07', page:'music2009', d:'2009-02-02', t:'二站台（重录）',
+    by:'迟夏', kind:'synth', patch:'guitar2', dur:'2:11', size:'3.4 MB',
+    note:'比上一版慢一点。' },
+  { id:'m08', page:'music2009', d:'2009-03-02', t:'春天',
+    by:'迟夏', kind:'broken',
+    note:'文件传坏了，只有前 4 秒能放，后面全是杂音。不重新传了。' },
+
+  { id:'m09', page:'musicNow', d:'2010-04-11', t:'雨声',
+    by:'迟夏', kind:'synth', patch:'rain2', dur:'0:04 循环', size:'52 KB',
+    note:'换了一个。录的时候窗外正好有人在关门。' },
+  { id:'m10', page:'musicNow', d:'2011-06-20', t:'（无标题）',
+    by:'迟夏', kind:'synth', patch:'book', dur:'0:22', size:'480 KB',
+    note:'翻书的声音。别问为什么放这个。' },
+  { id:'m11', page:'musicNow', d:'2012-01-30', t:'走路',
+    by:'迟夏', kind:'synth', patch:'step', dur:'1:35', size:'2.2 MB',
+    note:'从公司走到家，一路录的。' }
+];
+
+/* ------------------------------------------------------------------
+   相册
+   exif: [相机, 光圈, 快门, ISO, 尺寸]  —— 全部虚构；品牌是通用型号
+   ------------------------------------------------------------------ */
+const ALBUMS = [
+  { page:'photo2007', title:'夏天（2007）', d:'2007-06 ~ 2007-08',
+    items:[
+      { f:'dorm_0706.jpg', cap:'宿舍，桌上那堆是书和泡面', exif:['Canon EOS 350D','f/3.5','1/60s','ISO 400','1600×1200'] },
+      { f:'river_0714.jpg', cap:'河边，傍晚', exif:['Canon EOS 350D','f/5.6','1/125s','ISO 200','1600×1200'] },
+      { f:'river_0715.jpg', cap:'还是那条河', exif:['Canon EOS 350D','f/5.6','1/160s','ISO 200','1600×1200'] },
+      { f:'river_0716.jpg', cap:'水比平时浑', exif:['Canon EOS 350D','f/8','1/200s','ISO 200','1600×1200'] },
+      { f:'bridge_0721.jpg', cap:'桥底下', exif:['Canon EOS 350D','f/4','1/60s','ISO 800','1600×1200'] },
+      { f:'book_0727.jpg', cap:'书店里翻的那本，六十八', exif:['Canon EOS 350D','f/2.8','1/30s','ISO 1600','1600×1200'] }
+    ]},
+  { page:'photo2007b', title:'秋天到冬天（2007）', d:'2007-09 ~ 2007-12',
+    items:[
+      { f:'window_0902.jpg', cap:'从宿舍窗户往外', exif:['Canon EOS 350D','f/8','1/80s','ISO 200','1600×1200'] },
+      { f:'street_1003.jpg', cap:'国庆，走了整整一天', exif:['Canon EOS 350D','f/5.6','1/250s','ISO 100','1600×1200'] },
+      { f:'wall_1021.jpg', cap:'公司楼下那面墙，后来刷掉了', exif:['Canon EOS 350D','f/4','1/125s','ISO 400','1600×1200'] },
+      { f:'coat_1124.jpg', cap:'新买的，深灰色，二百八', exif:['Canon EOS 350D','f/2.8','1/15s','ISO 1600','1600×1200'] },
+      { f:'night_1224.jpg', cap:'平安夜，宿舍楼下', exif:['Canon EOS 350D','f/2','1/8s','ISO 3200','1600×1200'] }
+    ]},
+  { page:'photo2008', title:'毕业这一年（2008）', d:'2008-03 ~ 2008-06',
+    items:[
+      { f:'office_0409.jpg', cap:'实习的地方，一共四个人', exif:['Canon EOS 350D','f/4','1/60s','ISO 400','1600×1200'] },
+      { f:'desk_0420.jpg', cap:'我的桌子', exif:['Canon EOS 350D','f/3.5','1/50s','ISO 800','1600×1200'] },
+      { f:'0601_1.jpg', cap:'六月初，天很亮', exif:['Canon EOS 350D','f/9','1/400s','ISO 100','1600×1200'] },
+      { f:'0601_2.jpg', cap:'同一卷最后一张', exif:['Canon EOS 350D','f/9','1/320s','ISO 100','1600×1200'] },
+      { f:'0601_3.jpg', cap:'没对上焦', exif:['Canon EOS 350D','f/5.6','1/250s','ISO 100','1600×1200'] },
+      { f:'alley_0620.jpg', cap:'搬宿舍前，走廊', exif:['Canon EOS 350D','f/4','1/40s','ISO 800','1600×1200'] },
+      { f:'bgl_0701.jpg', cap:'租的房子，白果林往里走', exif:['Canon EOS 350D','f/4','1/60s','ISO 400','1600×1200'] }
+    ]},
+  { page:'photo2009', title:'最后几个月（2009）', d:'2009-01 ~ 2009-03',
+    items:[
+      { f:'spring_0302.jpg', cap:'楼下的树发芽了，糊了', exif:['Canon EOS 350D','f/3.5','1/30s','ISO 400','1600×1200'] }
+    ]}
+];
+
+/* 被替换掉的旧照片（只在 2007 快照相册里出现 → 图名与新图不同） */
+const ALBUM_GHOSTS = [
+  { f:'river_0714_old.jpg', cap:'（旧版，07 年 11 月被换掉的一张）',
+    exif:['Canon EOS 350D','f/5.6','1/100s','ISO 200','800×600'] }
+];
+
+/* 截图型图片：由本站旧页面离屏渲染而成 */
+const SHOTS = [
+  { page:'shot2007', f:'snap_071103.html', cap:'2007 年 11 月那次快照的首页截图' },
+  { page:'shot2009', f:'snap_090311.html', cap:'2009 年 3 月的首页截图' }
+];
+
+/* ------------------------------------------------------------------
+   友链 / 收藏
+   ------------------------------------------------------------------ */
+const FRIENDS = {
+  f2007: {
+    note:'友情链接（想换链的留言）',
+    list:[
+      { n:'林岸的博客', u:'linan.blog**.**.cn', d:'他去北京之前一直在写。' },
+      { n:'爱拍不拍', u:'photo.***.com', d:'摄影论坛，人挺杂的。' },
+      { n:'小满的小站', u:'guxing.**.net', d:'她居然也弄了一个，就三页。',
+        anchor:'guxing', note:'这个链接 2010 年以后就不见了。' },
+      { n:'服务器之家', u:'host.***.cn', d:'主机商，没什么好看的。' }
+    ]},
+  f2009: {
+    note:'友情链接',
+    list:[
+      { n:'林岸的博客', u:'linan.blog**.**.cn', d:'他最近更新得比我勤。' },
+      { n:'爱拍不拍', u:'photo.***.com' },
+      { n:'小满的小站', u:'guxing.**.net', anchor:'guxing',
+        d:'她更新得慢，一年两条。' }
+    ]},
+  fNow: {
+    note:'朋友',
+    list:[
+      { n:'林岸的博客', u:'linan.blog**.**.cn' },
+      { n:'爱拍不拍', u:'photo.***.com' }
+    ],
+    gone:'以前这里还有几个链接。删了。'
+  }
+};
+
+const LINKS = {
+  note:'收藏夹里的东西，都是用得上的',
+  groups:[
+    { g:'修网站用的', list:[
+      { n:'CSS 速查', d:'颜色记不住，老来查。' },
+      { n:'HTML 标签表', d:'表格那部分我看了很多遍。' },
+      { n:'在线取色器', d:'取出来还是丑，是手的问题。' }
+    ]},
+    { g:'拍照的', list:[
+      { n:'光圈快门对照', d:'新手必看，虽然我还是记不住。' },
+      { n:'构图那点事', d:'看的时候觉得懂了，拍的时候全忘。' }
+    ]},
+    { g:'没事看看', list:[
+      { n:'一个旧书店的目录', d:'很久没更新了，但东西都在。' },
+      { n:'天气', d:'比电视准。' },
+      { n:'火车时刻查询', d:'回不回得去，先查了再说。' }
+    ]}
+  ]
+};
+
+/* 下载页（"现在"这一版才有） */
+const DOWNLOADS = [
+  { f:'logo.psd', sz:'182 KB', d:'2010-05-11', note:'站标。用画图画的，图层是乱的。' },
+  { f:'rain.wav', sz:'41 KB', d:'2010-05-11', note:'首页那个声音，原始文件。' },
+  { f:'二站台.mp3', sz:'3.1 MB', d:'2010-05-11', note:'2008 年那版。' },
+  { f:'相册压缩脚本.bat', sz:'2 KB', d:'2011-09-23', note:'批处理，只能在我这台电脑上跑。' },
+  { f:'新建文本文档.txt', sz:'0 KB', d:'2012-04-12', note:'空的。忘了为什么建。' }
+];
+
+/* ===== js/30-pages.js ===== */
+/* ============================================================
+   《折页清》 — 页面表与路由
+   kind 决定用哪个渲染器；paths 是"探索用"的真实路径外观。
+   路由实现：hash + query。这样单文件在 GitHub Pages 子路径和
+   本地 file:// 下行为完全一致（不能用真实子目录，会 404）。
+   ============================================================ */
+
+const PAGES = {
+
+  /* ---------------- 首页：三个时期 + 首版 ---------------- */
+  home:      { kind:'home',    era:'2007', title:'首页',         paths:['/','/index.html'] },
+  homeOld:   { kind:'homeOld', era:'2007', title:'首页（2007 年首版）', paths:['/old/','/oldindex.html'],
+               noNav:true },
+  home2009:  { kind:'home',    era:'2009', title:'首页',         paths:['/home2009/'] },
+  homeNow:   { kind:'home',    era:'2012', title:'首页',         paths:['/index_now.html'] },
+
+  /* ---------------- 常设栏目 ---------------- */
+  about2007: { kind:'about',   era:'2007', title:'关于我',       paths:['/about/index.html'],
+               ver:'2007' },
+  about:     { kind:'about',   era:'2009', title:'关于我',       paths:['/about/2009/'], ver:'2009' },
+  aboutNow:  { kind:'about',   era:'2012', title:'关于我',       paths:[], ver:'2012' },
+
+  diary:     { kind:'diaryIdx',era:'2007', title:'日记',         paths:['/diary/'] },
+  diaryMonth:{ kind:'diary',   era:'2007', title:'日记',         paths:[] },
+  photo:     { kind:'photoIdx',era:'2007', title:'相册',         paths:['/photo/'] },
+  photo2007: { kind:'album',   era:'2007', title:'相册 - 夏天（2007）',       paths:[] },
+  photo2007b:{ kind:'album',   era:'2007', title:'相册 - 秋天到冬天（2007）', paths:[] },
+  photo2008: { kind:'album',   era:'2008', title:'相册 - 毕业这一年（2008）', paths:[] },
+  photo2009: { kind:'album',   era:'2009', title:'相册 - 最后几个月（2009）', paths:[] },
+  photoOld:  { kind:'photoOld',era:'2007', title:'旧相册',       paths:['/photo/old/'] },
+
+  music2007: { kind:'music',   era:'2007', title:'音乐',         paths:['/music/'] },
+  music2008: { kind:'music',   era:'2008', title:'音乐 - 2008',  paths:['/music/2008/'] },
+  music2009: { kind:'music',   era:'2009', title:'音乐 - 2009',  paths:['/music/2009/'] },
+  musicNow:  { kind:'music',   era:'2012', title:'音乐',         paths:[] },
+
+  guest:     { kind:'guest',   era:'2007', title:'留言板',       paths:['/guest/'], which:'g2007' },
+  guest2009: { kind:'guest',   era:'2009', title:'留言板 - 2009',paths:['/guest/2009/'], which:'g2009' },
+  guestNow:  { kind:'guest',   era:'2012', title:'留言板',       paths:[], which:'gNow' },
+
+  friends:   { kind:'friends', era:'2007', title:'友情链接',     paths:['/friends/'], which:'f2007' },
+  friendsOld:{ kind:'friends', era:'2009', title:'友情链接 - 2009', paths:['/friends/2009/'], which:'f2009' },
+  friendsNow:{ kind:'friends', era:'2012', title:'朋友',         paths:[], which:'fNow' },
+
+  links:     { kind:'links',   era:'2012', title:'收藏',         paths:['/links/'] },
+  download:  { kind:'download',era:'2012', title:'下载',         paths:['/download/'] },
+  contact:   { kind:'contact', era:'2012', title:'联系我',       paths:['/contact/'] },
+
+  /* ---------------- 档案 / 系统页 ---------------- */
+  log:       { kind:'log',     era:'2012', title:'网站更新记录', paths:['/log/'] },
+  archive:   { kind:'archive', era:'2012', title:'旧页面存档',   paths:['/archive/'] },
+  a2007:     { kind:'archiveYear', era:'2007', title:'存档 - 2007', paths:['/archive/2007/'], year:'2007' },
+  a2009:     { kind:'archiveYear', era:'2009', title:'存档 - 2009', paths:['/archive/2009/'], year:'2009' },
+  a2009diary:{ kind:'archDiary', era:'2009', title:'存档 - 2008 年那几篇', paths:['/archive/2009/diary/'] },
+  a2009music:{ kind:'archMusic', era:'2009', title:'存档 - 音乐（2008）',  paths:['/archive/2009/music/'] },
+  a2009friends:{ kind:'archFriends', era:'2009', title:'存档 - 友链（2009）', paths:['/archive/2009/friends/'] },
+  shot2007:  { kind:'shot',    era:'2007', title:'存档 - 首页截图', paths:[] },
+  shot2009:  { kind:'shot',    era:'2009', title:'存档 - 首页截图', paths:[] },
+
+  memo:      { kind:'memo',    era:'2012', title:'访客',         paths:['/memo/'] },
+  notfound:  { kind:'notfound',era:'2012', title:'找不到页面',   paths:[], noNav:false }
+};
+
+/* 路径 → 页面（去掉首尾斜杠差异后比较） */
+/* 顺手把页面 id 写回每个页面对象：渲染器和"下一页"链接都要靠 pg.id，
+   少了这一步，按 pg.id 过滤内容的地方会静默拿到空列表（踩过）。 */
+Object.keys(PAGES).forEach(function(id){ PAGES[id].id = id; });
+
+const PATH_ALIAS = (function(){
+  const m = {};
+  Object.keys(PAGES).forEach(function(id){
+    (PAGES[id].paths || []).forEach(function(p){
+      m[normPath(p)] = id;
+    });
+  });
+  return m;
+})();
+
+function normPath(p){
+  p = String(p || '').trim();
+  p = p.replace(/^#+/, '');
+  p = p.replace(/^[a-zA-Z0-9_.\-]*:?\/\/[^\/]*/, '');   /* 允许玩家粘贴整条域名 */
+  p = p.replace(/[?#].*$/, '');
+  if(p === '') return '/';
+  if(p.charAt(0) !== '/') p = '/' + p;
+  p = p.replace(/\/{2,}/g, '/');
+  if(!/\/[^\/]+\.[a-z0-9]+$/i.test(p)) p = p.replace(/\/?$/, '/');
+  return p;
+}
+
+/* 导航栏（左侧是站点栏目，右侧三项藏在页脚） */
+const NAV = [
+  { id:'home',     label:'首页' },
+  { id:'about2007',label:'关于我' },
+  { id:'diary',    label:'日记' },
+  { id:'photo',    label:'相册' },
+  { id:'music2007',label:'音乐' },
+  { id:'friends',  label:'朋友' },
+  { id:'guest',    label:'留言板' },
+  { id:'links',    label:'收藏' }
+];
+
+/* 页脚链接（真实个人站会把这些塞在底部） */
+const FOOTLINKS = [
+  { id:'log',      label:'更新记录' },
+  { id:'archive',  label:'旧页面存档' },
+  { id:'download', label:'下载' },
+  { id:'contact',  label:'联系我' }
+];
+
+/* ===== js/40-photo.js ===== */
+/* ============================================================
+   《折页清》 — 程序化图片（Canvas 运行时合成）
+   为什么不用 Base64：一张 1600×1200 的照片压到 30KB 也要
+   1.2MB 的 Base64 文本，几十张就撑爆单文件；而且 Base64 一眼假。
+   Canvas 合成是确定性的（固定种子），离线可用，代码只占几十 KB。
+   所有图片内容均为程序化生成的抽象画面，不含任何真实照片或真人。
+   ============================================================ */
+
+/* 固定种子随机（mulberry32）：同一文件名永远生成同一张图 */
+function seedOf(str){
+  let h = 2166136261 >>> 0;
+  for(let i=0;i<str.length;i++){ h ^= str.charCodeAt(i); h = Math.imul(h, 16777619); }
+  return h >>> 0;
+}
+function rng(seed){
+  let a = seed >>> 0;
+  return function(){
+    a |= 0; a = (a + 0x6D2B79F5) | 0;
+    let t = Math.imul(a ^ (a >>> 15), 1 | a);
+    t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  };
+}
+
+const PHOTO_STYLES = {
+  river:  { sky:['#c9cfca','#9fb0ad'], mid:['#8d9b8f','#6e7f74'], low:['#5d6a60','#43503f'], warm:.30, grain:.10 },
+  dorm:   { sky:['#d8d2c2'],           mid:['#a99a83','#8b7c66'], low:['#6a5c4a'],           warm:.55, grain:.14 },
+  street: { sky:['#d3d6d2'],           mid:['#a3a49c','#8a8b83'], low:['#5f6058'],           warm:.18, grain:.12 },
+  wall:   { sky:['#cfc9bd'],           mid:['#a89e8c','#8d8371'], low:['#6b6252'],           warm:.34, grain:.16 },
+  office: { sky:['#e2e0d6'],           mid:['#b7b2a2','#9a9585'], low:['#6f6a5c'],           warm:.40, grain:.13 },
+  night:  { sky:['#2b3340','#1d2430'], mid:['#3a4353','#252d3a'], low:['#141a24'],           warm:.10, grain:.30, dark:.45 },
+  spring: { sky:['#d9dcd2'],           mid:['#9aa88b','#7d8c6e'], low:['#5e6b52'],           warm:.30, grain:.11 },
+  paper:  { sky:['#efeade'],           mid:['#ded6c4','#cfc5b0'], low:['#b9ad95'],           warm:.62, grain:.20 },
+  hand:   { sky:['#f6f3ea'],           mid:['#eee9dc'],           low:['#e6e0d0'],           warm:.40, grain:.24, scan:true }
+};
+
+/* 主入口：把一张"照片"画到 canvas 上。
+   相册里用 CSS 缩到 220px 宽，只有放大时才用原尺寸显示。 */
+function drawPhoto(canvas, filename, cap){
+  const W = 640, H = (/shot|snap|screen/i.test(filename) ? 460 : 480);
+  const r = rng(seedOf(filename));
+  canvas.width = W; canvas.height = H;
+  const g = canvas.getContext('2d');
+
+  /* 选风格：用文件名与标题一起决定，保证"同类照片"看着像一个地方 */
+  const key = styleKey(filename, cap);
+  const st = PHOTO_STYLES[key] || PHOTO_STYLES.street;
+
+  /* --- 底：天空/背景 --- */
+  const s0 = st.sky[0], s1 = st.sky[1] || st.sky[0];
+  const grd = g.createLinearGradient(0, 0, 0, H);
+  grd.addColorStop(0, s0); grd.addColorStop(1, s1);
+  g.fillStyle = grd; g.fillRect(0, 0, W, H);
+
+  /* --- 中景：几块横向色带（建筑/墙/水面）--- */
+  const horizon = H * (0.34 + r() * 0.20);
+  for(let i=0;i<4;i++){
+    const y = horizon + (H - horizon) * (i / 4);
+    g.fillStyle = mix(st.mid[0], st.mid[1] || st.mid[0], r());
+    const hgt = (H - horizon) / 4 + 6;
+    g.globalAlpha = 0.85;
+    g.fillRect(0, y, W, hgt);
+  }
+  g.globalAlpha = 1;
+
+  /* --- 竖线：电杆、栏杆、窗框 --- */
+  const nV = 3 + Math.floor(r() * 6);
+  for(let i=0;i<nV;i++){
+    const x = r() * W;
+    g.strokeStyle = rgba(mix(st.low[0], st.low[1] || st.low[0], r()), 0.55);
+    g.lineWidth = 1 + r() * 3;
+    g.beginPath(); g.moveTo(x, H * (0.25 + r() * 0.3)); g.lineTo(x, H); g.stroke();
+  }
+
+  /* --- 远景楼：矩形块 --- */
+  const nB = 2 + Math.floor(r() * 5);
+  for(let i=0;i<nB;i++){
+    const bw = 40 + r() * 130, bh = 30 + r() * 120;
+    const bx = r() * (W - bw), by = horizon - bh + r() * 20;
+    g.fillStyle = rgba(mix(st.mid[1] || st.mid[0], st.low[0], r()), 0.55);
+    g.fillRect(bx, by, bw, bh);
+  }
+
+  /* --- 前景：地面/桌面 --- */
+  g.fillStyle = mix(st.low[0], st.low[1] || st.low[0], 0.4);
+  g.fillRect(0, H * 0.80, W, H * 0.20);
+
+  /* --- 一盏灯/一个亮点（夜景才给）--- */
+  if(key === 'night'){
+    const lx = 0.2 * W + r() * 0.6 * W, ly = H * (0.4 + r() * 0.25);
+    const rg = g.createRadialGradient(lx, ly, 2, lx, ly, 70);
+    rg.addColorStop(0, 'rgba(255,226,160,0.85)');
+    rg.addColorStop(1, 'rgba(255,226,160,0)');
+    g.fillStyle = rg; g.beginPath(); g.arc(lx, ly, 70, 0, 6.284); g.fill();
+  }
+
+  /* --- 暖色偏移（老数码相机的白平衡）--- */
+  if(st.warm){
+    g.globalCompositeOperation = 'overlay';
+    g.fillStyle = rgba('#ffb45a', st.warm * 0.5);
+    g.fillRect(0, 0, W, H);
+    g.globalCompositeOperation = 'source-over';
+  }
+
+  /* --- 扫描件：纸纹 + 折痕 --- */
+  if(st.scan){
+    g.strokeStyle = 'rgba(120,110,90,0.20)'; g.lineWidth = 1;
+    for(let i=0;i<5;i++){
+      const y = H * (0.2 + i * 0.15);
+      g.beginPath(); g.moveTo(0, y); g.lineTo(W, y + (r()*8-4)); g.stroke();
+    }
+    g.fillStyle = 'rgba(255,255,255,0.28)';
+    g.fillRect(0, 0, W, H * 0.06);
+  }
+
+  /* --- 手写（扫描件专用）：把 caption 当"手写内容"的占位笔画 --- */
+  if(key === 'hand') drawHandwriting(g, W, H, cap, r);
+
+  /* --- 暗角 + 颗粒 --- */
+  vignette(g, W, H, key === 'night' ? 0.55 : 0.26);
+  grain(g, W, H, st.grain, r);
+
+  /* --- JPEG 压缩痕迹（色带 + 8px 块感）--- */
+  if(r() < 0.75) banding(g, W, H, r);
+
+  /* --- 日期戳（右下角，老数码相机的橙色字）--- */
+  if(/^(river|dorm|street|wall|office|night|spring)|_\d{4}\.jpg$/.test(filename) && r() < 0.8){
+    g.font = '13px Consolas, monospace';
+    g.fillStyle = 'rgba(255,150,40,0.80)';
+    const d = (cap || '').match(/\d{4}/);
+    g.fillText('2007 8 14', W - 92, H - 10);
+  }
+
+  /* --- 文件名水印（只在放大时显示更细）--- */
+  if(/snap_|_old|shot/.test(filename)){
+    g.font = '10px Consolas, monospace';
+    g.fillStyle = 'rgba(255,255,255,0.72)';
+    g.fillText(filename, 8, 14);
+  }
+}
+
+function styleKey(fn, cap){
+  const s = (fn + ' ' + (cap || ''));
+  if(/river|bridge|水|河/.test(s)) return 'river';
+  if(/dorm|desk|book|coat|宿舍|书|桌子/.test(s)) return 'dorm';
+  if(/night|夜|平安/.test(s)) return 'night';
+  if(/office|公司|实习/.test(s)) return 'office';
+  if(/wall|alley|街|墙|走廊/.test(s)) return 'wall';
+  if(/spring|0601|bgl|春天|六月初/.test(s)) return 'spring';
+  if(/hand|字|手写/.test(s)) return 'hand';
+  return 'street';
+}
+
+function mix(a, b, t){
+  const A = hex2rgb(a), B = hex2rgb(b);
+  return 'rgb(' + Math.round(A[0]+(B[0]-A[0])*t) + ',' +
+                  Math.round(A[1]+(B[1]-A[1])*t) + ',' +
+                  Math.round(A[2]+(B[2]-A[2])*t) + ')';
+}
+function hex2rgb(h){
+  if(h.charAt(0) !== '#') return [128,128,128];
+  return [parseInt(h.substr(1,2),16), parseInt(h.substr(3,2),16), parseInt(h.substr(5,2),16)];
+}
+function rgba(c, a){
+  if(c.charAt(0) === '#') { const p = hex2rgb(c); return 'rgba(' + p[0] + ',' + p[1] + ',' + p[2] + ',' + a + ')'; }
+  return c;
+}
+function vignette(g, W, H, k){
+  const rg = g.createRadialGradient(W/2, H/2, Math.min(W,H)*0.28, W/2, H/2, Math.max(W,H)*0.72);
+  rg.addColorStop(0, 'rgba(0,0,0,0)');
+  rg.addColorStop(1, 'rgba(0,0,0,' + k + ')');
+  g.fillStyle = rg; g.fillRect(0, 0, W, H);
+}
+function grain(g, W, H, k, r){
+  const img = g.getImageData(0, 0, W, H), d = img.data;
+  const amt = Math.round(k * 120);
+  for(let i=0;i<d.length;i+=4){
+    const n = (r() * 2 - 1) * amt;
+    d[i] += n; d[i+1] += n; d[i+2] += n;
+  }
+  g.putImageData(img, 0, 0);
+}
+function banding(g, W, H, r){
+  g.globalAlpha = 0.06;
+  for(let y=0;y<H;y+=8){
+    if(r() < 0.18){
+      g.fillStyle = r() < 0.5 ? '#000' : '#fff';
+      g.fillRect(0, y, W, 3);
+    }
+  }
+  g.globalAlpha = 1;
+}
+
+/* 手写笔画：用一条连续折线模拟字迹，并保留"末横"的两种习惯
+   hook=true  → 末横上挑（陆知遥的写法）
+   hook=false → 末横平直且更短（另一个人的写法） */
+function drawHandwriting(g, W, H, cap, r){
+  const hook = /hand_a/.test(cap || '') ? true : (/hand_b/.test(cap || '') ? false : r() < 0.5);
+  g.strokeStyle = 'rgba(38,42,60,0.86)';
+  g.lineCap = 'round'; g.lineJoin = 'round';
+  const rows = 3, baseY = H * 0.30, rowH = H * 0.16;
+  for(let row=0; row<rows; row++){
+    const y0 = baseY + row * rowH;
+    let x = W * 0.16;
+    const nCells = 7 + Math.floor(r() * 3);
+    const cw = (W * 0.68) / nCells;
+    for(let c=0;c<nCells;c++){
+      const cn = 3 + Math.floor(r() * 3);
+      g.lineWidth = 2.1;
+      g.beginPath();
+      let px = x, py = y0;
+      for(let s=0;s<cn;s++){
+        const nx = px + cw * (0.22 + r() * 0.3);
+        const ny = y0 - (r() * rowH * 0.55);
+        g.moveTo(px, py); g.lineTo(nx, ny);
+        px = nx; py = ny;
+      }
+      /* 末横：这是全作最要紧的一笔 */
+      g.lineWidth = 1.9;
+      g.beginPath();
+      if(hook){
+        g.moveTo(x - 1, y0 + 3);
+        g.lineTo(x + cw * 0.72, y0 + 3);
+        g.lineTo(x + cw * 0.86, y0 - 1.5);          /* 上挑 */
+      } else {
+        g.moveTo(x + 1, y0 + 3);
+        g.lineTo(x + cw * 0.50, y0 + 3);            /* 平直且更短 */
+      }
+      g.stroke();
+      x += cw;
+    }
+  }
+}
+
+/* 旧网页截图：把一段伪 HTML 画成图片 */
+function drawShot(canvas, filename, kind){
+  const W = 640, H = 460;
+  canvas.width = W; canvas.height = H;
+  const g = canvas.getContext('2d');
+  const old = kind === '2007';
+  g.fillStyle = old ? '#f4f4ef' : '#eef1f2'; g.fillRect(0,0,W,H);
+  /* 浏览器窗口边 */
+  g.fillStyle = '#d7dae0'; g.fillRect(0,0,W,26);
+  g.fillStyle = '#40454d'; g.font = '12px "Segoe UI", Tahoma, sans-serif';
+  g.fillText('折页' + (old ? '志' : '清') + ' - ' + (old ? '首页' : '首页'), 10, 17);
+  g.fillStyle = '#3a3f46'; g.fillRect(W-140, 6, 128, 15);
+  g.fillStyle = '#e9ebee'; g.font = '11px Consolas, monospace';
+  g.fillText(old ? 'http://zheyue.**.cn/' : 'http://zheyue.pages.dev/', W-136, 18);
+  /* 内容：标题 + 导航 + 几行 */
+  const bg = old ? 'rgba(0,0,0,0.06)' : 'rgba(0,0,0,0.04)';
+  g.fillStyle = bg;
+  let y = 48;
+  for(let i=0;i<3;i++){ g.fillRect(W/2-i*60, y, i===0?180:i*120, 10); y += 14; }
+  y = 96;
+  g.fillRect(W/2-230, y, 460, 18);
+  y += 30;
+  for(let i=0;i<11;i++){
+    const w = 200 + ((i*37) % 190);
+    g.fillRect(70, y, w, 7);
+    y += 15;
+  }
+  y += 8;
+  for(let i=0;i<4;i++){ g.fillRect(70, y, 120 + ((i*53)%150), 7); y += 15; }
+  /* 页脚 */
+  g.fillStyle = 'rgba(0,0,0,0.10)';
+  g.fillRect(0, H-46, W, 1);
+  g.fillRect(W/2-90, H-32, 180, 7);
+  /* 扫描噪点 */
+  const r = rng(seedOf(filename));
+  vignette(g, W, H, 0.18);
+  grain(g, W, H, 0.09, r);
+}
+
+/* 缩小到相册里显示；返回新 canvas，避免每次放大重画 */
+function renderPhotoCanvas(fn, cap, kind){
+  const c = document.createElement('canvas');
+  if(/^snap_/.test(fn)) drawShot(c, fn, kind);
+  else drawPhoto(c, fn, cap);
+  return c;
+}
+
+/* ===== js/50-audio.js ===== */
+/* ============================================================
+   《折页清》 — 声音（WebAudio 运行时合成，零外部文件）
+   刻意做得"像个人录的"：有底噪、有起止的杂音、不干净。
+   无障碍：默认静音、可跳过、每个声音都有文字说明。
+   ============================================================ */
+
+const Audio_ = {
+  ctx:null, nodes:[], playing:null, gain:0.35, enabled:true,
+
+  init(){
+    if(this.ctx) return true;
+    const AC = window.AudioContext || window.webkitAudioContext;
+    if(!AC) return false;
+    try{ this.ctx = new AC(); }catch(e){ return false; }
+    return true;
+  },
+  resume(){
+    if(!this.ctx) return false;
+    if(this.ctx.state === 'suspended') this.ctx.resume();
+    return true;
+  },
+  stopAll(){
+    this.nodes.forEach(function(n){ try{ n.stop ? n.stop(0) : n.disconnect(); }catch(e){} });
+    this.nodes = []; this.playing = null;
+  },
+  /* 白噪缓冲 */
+  noise(sec){
+    const ctx = this.ctx, len = Math.max(1, Math.floor(ctx.sampleRate * sec));
+    const buf = ctx.createBuffer(1, len, ctx.sampleRate);
+    const d = buf.getChannelData(0);
+    let last = 0;
+    for(let i=0;i<len;i++){
+      const w = Math.random() * 2 - 1;
+      last = (last + 0.02 * w) / 1.02;      /* 棕噪，比白噪更像环境 */
+      d[i] = last * 3.2 + w * 0.12;
+    }
+    return buf;
+  },
+  loopNoise(sec, filterHz, q, g0){
+    const ctx = this.ctx;
+    const src = ctx.createBufferSource();
+    src.buffer = this.noise(sec); src.loop = true;
+    const f = ctx.createBiquadFilter();
+    f.type = 'bandpass'; f.frequency.value = filterHz; f.Q.value = q || 0.7;
+    const g = ctx.createGain(); g.gain.value = g0;
+    src.connect(f); f.connect(g); g.connect(ctx.destination);
+    src.start();
+    this.nodes.push(src, f, g);
+    return { src:src, g:g };
+  },
+  tone(freq, t0, dur, type, vol, glide){
+    const ctx = this.ctx;
+    const o = ctx.createOscillator(), g = ctx.createGain();
+    o.type = type || 'sine';
+    o.frequency.setValueAtTime(freq, t0);
+    if(glide) o.frequency.linearRampToValueAtTime(glide, t0 + dur);
+    g.gain.setValueAtTime(0.0001, t0);
+    g.gain.exponentialRampToValueAtTime(Math.max(0.0002, vol), t0 + Math.min(0.06, dur*0.25));
+    g.gain.exponentialRampToValueAtTime(0.0001, t0 + dur);
+    o.connect(g); g.connect(ctx.destination);
+    o.start(t0); o.stop(t0 + dur + 0.02);
+    this.nodes.push(o, g);
+  },
+  pluck(freq, t0){
+    const ctx = this.ctx;
+    [1, 2, 3.01, 4.7].forEach((h, i) => {
+      const o = ctx.createOscillator(), g = ctx.createGain();
+      o.type = i === 0 ? 'triangle' : 'sine';
+      o.frequency.value = freq * h;
+      const v = 0.16 / (i + 1.4);
+      g.gain.setValueAtTime(0.0001, t0);
+      g.gain.exponentialRampToValueAtTime(v, t0 + 0.008);
+      g.gain.exponentialRampToValueAtTime(0.0001, t0 + 1.5 / (1 + i*0.6));
+      o.connect(g); g.connect(ctx.destination);
+      o.start(t0); o.stop(t0 + 1.8);
+      this.nodes.push(o, g);
+    });
+  },
+
+  /* 每个 patch 一个生成函数 */
+  patches:{
+    rain(){ this.loopNoise(3, 3200, 0.45, 0.10); this.loopNoise(3, 620, 0.6, 0.06); },
+    rain2(){ this.loopNoise(3, 2600, 0.5, 0.085); this.loopNoise(3, 520, 0.6, 0.055);
+      const ctx = this.ctx, t = ctx.currentTime + 0.4;
+      this.tone(180, t, 0.10, 'square', 0.05, 90);      /* 远处关门 */
+      this.tone(120, t + 0.14, 0.16, 'sine', 0.04, 70);
+    },
+    guitar(){ this.chords([[196,246.9,293.7],[174.6,220,261.6],[146.8,196,246.9],[164.8,220,246.9]], 0.62, 0.6); },
+    guitar2(){ this.chords([[196,246.9,293.7],[174.6,220,261.6],[146.8,196,246.9],[130.8,164.8,196]], 0.78, 0.62); },
+    hum(){ const ctx = this.ctx, t0 = ctx.currentTime;
+      [220, 277, 330, 294, 262].forEach((f, i) => this.tone(f, t0 + i*0.55, 0.5, 'sine', 0.05));
+    },
+    book(){ const ctx = this.ctx, t0 = ctx.currentTime;
+      for(let i=0;i<4;i++){
+        const t = t0 + i * 0.9 + Math.random()*0.2;
+        this.tone(900 + Math.random()*500, t, 0.05, 'square', 0.03);
+        this.loopNoiseAt(t, 0.12, 4200, 0.05);
+      }
+    },
+    step(){ const ctx = this.ctx, t0 = ctx.currentTime;
+      for(let i=0;i<9;i++){
+        const t = t0 + i * 0.52;
+        this.tone(88 - i*1.2, t, 0.09, 'sine', 0.10, 62);
+        this.loopNoiseAt(t, 0.06, 2600, 0.045);
+      }
+    }
+  },
+  loopNoiseAt(t0, dur, hz, vol){
+    const ctx = this.ctx;
+    const src = ctx.createBufferSource();
+    src.buffer = this.noise(dur + 0.2);
+    const f = ctx.createBiquadFilter(); f.type = 'bandpass'; f.frequency.value = hz; f.Q.value = 1.1;
+    const g = ctx.createGain();
+    g.gain.setValueAtTime(0.0001, t0);
+    g.gain.exponentialRampToValueAtTime(vol, t0 + 0.01);
+    g.gain.exponentialRampToValueAtTime(0.0001, t0 + dur);
+    src.connect(f); f.connect(g); g.connect(ctx.destination);
+    src.start(t0); src.stop(t0 + dur + 0.05);
+    this.nodes.push(src, f, g);
+  },
+  chords(list, gap, dur){
+    const ctx = this.ctx, t0 = ctx.currentTime;
+    list.forEach((ch, i) => {
+      ch.forEach(f => this.pluck(f, t0 + i * gap));
+      /* 换气：每两拍之间留一点气口（吉他版和人声版的气口位置不同） */
+      if(i % 2 === 1) this.loopNoiseAt(t0 + i * gap + dur * 0.5, 0.16, 900, 0.02);
+    });
+  },
+
+  play(patch){
+    if(!this.enabled) return false;
+    if(!this.init()) return false;
+    this.resume();
+    this.stopAll();
+    const fn = this.patches[patch] || this.patches.rain;
+    try{ fn.call(this); }catch(e){ logErr('audio:' + patch + ':' + e.message); return false; }
+    this.playing = patch;
+    return true;
+  }
+};
+
+/* 播放器小控件：返回 DOM */
+function audioWidget(patch, label, note){
+  const wrap = document.createElement('span');
+  wrap.className = 'audio';
+  const b = document.createElement('a');
+  b.href = '#'; b.textContent = '▶ 播放';
+  b.setAttribute('role', 'button');
+  b.setAttribute('aria-label', '播放：' + label + '（约 6 秒，可随时停止）');
+  let on = false;
+  b.addEventListener('click', function(ev){
+    ev.preventDefault();
+    if(on){ Audio_.stopAll(); on = false; b.textContent = '▶ 播放'; return; }
+    if(Audio_.play(patch)){ on = true; b.textContent = '■ 停止'; }
+    else { b.textContent = '（浏览器不支持）'; }
+  });
+  wrap.appendChild(b);
+  if(note){
+    const n = document.createElement('span');
+    n.className = 'tiny dim';
+    n.style.marginLeft = '6px';
+    n.textContent = note;
+    wrap.appendChild(n);
+  }
+  return wrap;
+}
+
+/* ===== js/60-state.js ===== */
+/* ============================================================
+   《折页清》 — 存档 / 状态 / 路由 / 搜索
+   存档只用 localStorage（键：zheyue.save.v1），可随时清空。
+   全程零网络请求。
+   ============================================================ */
+
+const SAVE_KEY = 'zheyue.save.v1';
+const ERRORS = [];
+
+function logErr(msg){
+  ERRORS.push({ t:new Date().toISOString(), m:String(msg) });
+  if(ERRORS.length > 60) ERRORS.shift();
+  if(window.__DEBUG) renderDebug();
+}
+window.addEventListener('error', function(e){ logErr('js: ' + e.message + ' @' + (e.lineno||'?')); });
+
+/* ---------------- 状态 ---------------- */
+const State = {
+  visited:    {},   /* id -> 次数 */
+  historyLog: [],   /* 跳转历史 */
+  foundRoutes:[],   /* 玩家亲自输入成功的路径 */
+  searches:   [],   /* 搜过的词 */
+  sound:      false,
+  visitCount: 0,
+  firstSeen:  null,
+  flags:      { sawOld:false, sawArchive:false, sawTerminalNote:false, logRead:false },
+  ui:         { fs:'', anim:true, flash:true, contrast:false, showSource:false }
+
+  ,load(){
+    try{
+      const raw = localStorage.getItem(SAVE_KEY);
+      if(!raw) return false;
+      const s = JSON.parse(raw);
+      Object.assign(this, s);
+      this.ui = Object.assign({ fs:'', anim:true, flash:true, contrast:false, showSource:false }, s.ui || {});
+      return !!(this.visited && Object.keys(this.visited).length);
+    }catch(e){ logErr('save-read: ' + e.message); return false; }
+  }
+  ,save(){
+    try{
+      localStorage.setItem(SAVE_KEY, JSON.stringify({
+        visited:this.visited, historyLog:this.historyLog.slice(-120),
+        foundRoutes:this.foundRoutes, searches:this.searches.slice(-40),
+        sound:this.sound, visitCount:this.visitCount, firstSeen:this.firstSeen,
+        flags:this.flags, ui:this.ui
+      }));
+    }catch(e){ logErr('save-write: ' + e.message); }
+  }
+  ,reset(){
+    try{ localStorage.removeItem(SAVE_KEY); }catch(e){}
+    this.visited={}; this.historyLog=[]; this.foundRoutes=[]; this.searches=[];
+    this.visitCount=0; this.firstSeen=null;
+    this.flags={ sawOld:false, sawArchive:false, sawTerminalNote:false, logRead:false };
+  }
+  ,count(){ return Object.keys(this.visited).length; }
+  ,seen(id){ return !!this.visited[id]; }
+};
+
+/* ---------------- 路由 ---------------- */
+function currentRoute(){
+  const h = (location.hash || '').replace(/^#/, '');
+  let route = '', p = '';
+  if(h){
+    const q = h.indexOf('?');
+    route = q < 0 ? h : h.slice(0, q);
+    p = q < 0 ? '' : h.slice(q + 1);
+  } else {
+    const sp = new URLSearchParams(location.search);
+    route = sp.get('p') || '';
+    if(route) p = 'q=' + encodeURIComponent(sp.get('q') || '');
+  }
+  route = decodeURIComponent(route);
+  const params = {};
+  if(p){
+    p.split('&').forEach(function(kv){
+      const i = kv.indexOf('=');
+      if(i > 0) params[decodeURIComponent(kv.slice(0,i))] = decodeURIComponent(kv.slice(i+1).replace(/\+/g,' '));
+    });
+  }
+  return { route: route, params: params };
+}
+
+function go(route, params, isUserTyped){
+  const qs = Object.keys(params || {}).map(function(k){
+    return encodeURIComponent(k) + '=' + encodeURIComponent(params[k]);
+  }).join('&');
+  const target = '#' + route + (qs ? '?' + qs : '');
+  if(isUserTyped){
+    const norm = normPath(route);
+    if(State.foundRoutes.indexOf(norm) < 0) State.foundRoutes.push(norm);
+  }
+  if(location.hash === target){ render(); return; }
+  location.hash = target;   /* 触发 hashchange */
+}
+
+/* 把 route 解析成页面 id；支持直接输入真实路径 */
+function resolveRoute(route, params){
+  if(!route || route === '/' || route === '') return 'home';
+  /* 1) 先按页面 id 认（站内链接都是 #/页面id 的形式） */
+  let key = String(route).replace(/^\/+|\/+$/g, '');
+  if(!key) return 'home';
+  if(PAGES[key]){
+    /* 同一个页面 id 可以带参数表示子视图：日记带月份就是"某个月的日记"，
+       链接和手输路径两条路都要能进得来 */
+    if(params && params.m && key === 'diary') return 'diaryMonth';
+    return key;
+  }
+  /* 2) 再按真实路径认（玩家在地址框里手输的那些） */
+  const norm = normPath(route);
+  if(PATH_ALIAS[norm]) return PATH_ALIAS[norm];
+  const byPath = Object.keys(PAGES).filter(function(id){
+    return (PAGES[id].paths || []).some(function(p){ return normPath(p) === norm; });
+  });
+  if(byPath.length) return byPath[0];
+  /* 3) 带月份的日记路径：/diary/200810/ 这种写法也该能进 */
+  const m = /^\/diary\/(\d{4})(\d{2})\/?$/.exec(norm);
+  if(m) return 'diaryMonth';
+  return 'notfound';
+}
+
+/* 从路由与参数里取出这次要渲染的月份（YYYY-MM） */
+function monthOfRoute(route, params){
+  if(params && params.m) return String(params.m).replace('/', '-');
+  const m = /^\/?diary\/(\d{4})-?(\d{2})\/?$/.exec(String(route || '').replace(/^\/+/,'/'));
+  if(m) return m[1] + '-' + m[2];
+  if(params && params.j){
+    const e = DIARY.filter(function(x){ return x.id === params.j; })[0];
+    if(e) return e.d.slice(0,7);
+  }
+  return '';
+}
+
+function currentPathOf(id){
+  const pg = PAGES[id] || PAGES.notfound;
+  return (pg.paths && pg.paths[0]) || ('/' + id + '/');
+}
+
+/* ---------------- 站内搜索 ---------------- */
+function tokenize(q){
+  return String(q || '').toLowerCase().split(/[\s,，。、]+/).filter(Boolean);
+}
+
+/* 建立索引：日记 / 留言 / 音乐 / 相册 / 更新日志 / 页面标题 */
+function buildIndex(){
+  const idx = [];
+  DIARY.forEach(function(e){
+    idx.push({ id:e.id, kind:'diary', del:!!e.del, d:e.d, title:e.title,
+      path:'/diary/' + e.d.slice(0,4) + e.d.slice(5,7) + '/#' + e.id,
+      title2:e.title, text:e.title + ' ' + e.body + ' ' + (e.notes||''),
+      where:'日记' + (e.del ? '（已删除条目）' : '') });
+  });
+  Object.keys(GUEST).forEach(function(k){
+    const pid = k === 'g2007' ? 'guest' : (k === 'g2009' ? 'guest2009' : 'guestNow');
+    GUEST[k].forEach(function(m, i){
+      idx.push({ id:pid + '-m' + i, kind:'guest', page:pid, d:m.d, title:(m.name||'') + '：' + m.tx.slice(0,26),
+        path:currentPathOf(pid) + '#' + pid + '-m' + i,
+        text:(m.name||'') + ' ' + m.tx + ' ' + (m.note||''),
+        where:'留言板' + (k === 'gNow' ? '（现在）' : k === 'g2009' ? '（2009）' : '（2007）') });
+    });
+  });
+  MUSIC.forEach(function(m){
+    idx.push({ id:m.id, kind:'music', page:m.page, d:m.d, title:m.t,
+      path:currentPathOf(m.page) + '#' + m.id,
+      text:m.t + ' ' + m.by + ' ' + (m.note||'') + ' ' + m.kind,
+      where:'音乐' });
+  });
+  ALBUMS.forEach(function(a){
+    a.items.forEach(function(it, i){
+      idx.push({ id:a.page + '-p' + i, kind:'photo', page:a.page, d:a.d, title:it.cap,
+        path:currentPathOf(a.page) + '#' + it.f,
+        text:it.cap + ' ' + it.f + ' ' + a.title, where:'相册' });
+    });
+  });
+  ALBUM_GHOSTS.forEach(function(it, i){
+    idx.push({ id:'ghost-p' + i, kind:'photo', d:'2007-11-03', title:it.cap,
+      path:currentPathOf('photoOld') + '#' + it.f, text:it.cap + ' ' + it.f, where:'相册（旧）' });
+  });
+  LOG.forEach(function(l, i){
+    idx.push({ id:'log' + i, kind:'log', d:l.d, title:l.d + ' ' + l.t,
+      path:currentPathOf('log') + '#log' + i, text:l.t, where:'更新记录' });
+  });
+  idx.push({ id:'f-guxing', kind:'friend', d:'2008-02-14', title:'小满的小站（guxing.**.net）',
+    path:currentPathOf('friendsOld') + '#guxing',
+    text:'小满的小站 guxing 谷行 友情链接 她居然也弄了一个 一年两条', where:'友情链接' });
+  idx.push({ id:'dl-rain', kind:'dl', d:'2010-05-11', title:'rain.wav',
+    path:currentPathOf('download') + '#dl', text:'rain.wav 首页那个声音 原始文件', where:'下载' });
+  return idx;
+}
+
+const SEARCH_INDEX = buildIndex();
+
+function search(q){
+  const toks = tokenize(q);
+  if(!toks.length) return { q:q, hits:[], deleted:0, total:0 };
+  const hits = [];
+  SEARCH_INDEX.forEach(function(it){
+    const hay = (it.title + ' ' + it.text + ' ' + it.where).toLowerCase();
+    let score = 0, all = true;
+    toks.forEach(function(t){
+      if(hay.indexOf(t) >= 0){
+        score += (it.title.toLowerCase().indexOf(t) >= 0 ? 3 : 1);
+      } else all = false;
+    });
+    if(all) hits.push(Object.assign({ score:score }, it));
+  });
+  hits.sort(function(a,b){ return b.score - a.score || String(b.d).localeCompare(String(a.d)); });
+  return { q:q, hits:hits, deleted:hits.filter(function(h){ return h.del; }).length, total:hits.length };
+}
+
+/* 站内"文章正文高亮"用的辅助 */
+function highlight(text, q){
+  const toks = tokenize(q);
+  if(!toks.length) return [document.createTextNode(text)];
+  let frag = document.createDocumentFragment();
+  let rest = String(text);
+  while(rest.length){
+    let best = -1, bestLen = 0;
+    toks.forEach(function(t){
+      const i = rest.toLowerCase().indexOf(t);
+      if(i >= 0 && (best < 0 || i < best)){ best = i; bestLen = t.length; }
+    });
+    if(best < 0){ frag.appendChild(document.createTextNode(rest)); break; }
+    if(best > 0) frag.appendChild(document.createTextNode(rest.slice(0, best)));
+    const mark = document.createElement('span');
+    mark.className = 'hit';
+    mark.textContent = rest.substr(best, bestLen);
+    frag.appendChild(mark);
+    rest = rest.slice(best + bestLen);
+  }
+  return [frag];
+}
+
+/* ===== js/70-render.js ===== */
+/* ============================================================
+   《折页清》 — 渲染器
+   一次渲染 = 一个页面的完整 HTML。没有 HUD、没有任务栏、没有进度。
+   ============================================================ */
+
+/* ---------------- DOM 小工具 ---------------- */
+function E(tag, attrs, children){
+  const el = document.createElement(tag);
+  if(attrs) Object.keys(attrs).forEach(function(k){
+    const v = attrs[k];
+    if(v === null || v === undefined) return;
+    if(k === 'class') el.className = v;
+    else if(k === 'text') el.textContent = v;
+    else if(k === 'html') el.innerHTML = v;
+    else if(k === 'style') el.setAttribute('style', v);
+    else if(k.slice(0,2) === 'on') el.addEventListener(k.slice(2), v);
+    else el.setAttribute(k, v);
+  });
+  (children || []).forEach(function(c){
+    if(c === null || c === undefined || c === false) return;
+    el.appendChild(typeof c === 'string' ? document.createTextNode(c) : c);
+  });
+  return el;
+}
+function A(id, label, params){
+  const pg = PAGES[id] || PAGES.notfound;
+  const qs = Object.assign({}, params || {});
+  const href = '#/' + id + (Object.keys(qs).length ? '?' + Object.keys(qs).map(function(k){
+    return encodeURIComponent(k) + '=' + encodeURIComponent(qs[k]); }).join('&') : '');
+  return E('a', { href:href, title:pg.title }, [label]);
+}
+function txt(s){ return document.createTextNode(s); }
+function P(s, cls){ return E('p', cls ? { class:cls } : null, [s]); }
+
+/* 日期显示习惯：早期写 2007-08-14，代管期写 2007 年 8 月 14 日 */
+function fmtDate(d, era){
+  const y = d.slice(0,4), m = +d.slice(5,7), dd = +d.slice(8,10);
+  if(era === '2012') return y + ' 年 ' + m + ' 月 ' + dd + ' 日';
+  return d;
+}
+function fmtMonth(k){ return k.slice(0,4) + ' 年 ' + (+k.slice(5,7)) + ' 月'; }
+
+/* 页面在标题里怎么称呼自己（日记要带上月份，像真站那样） */
+function titleOf(pg, loc){
+  if(pg.kind === 'diary'){
+    const m = monthOfRoute(loc.route, loc.params);
+    if(m) return '日记 - ' + fmtMonth(m);
+  }
+  return pg.title;
+}
+
+/* ---------------- 骨架 ---------------- */
+function render(){
+  const loc = currentRoute();
+  const id = resolveRoute(loc.route, loc.params);
+  const pg = PAGES[id] || PAGES.notfound;
+  render.pageId = id;
+
+  /* 记录访问 */
+  const first = State.touch(id);
+  State.pushHistory(id);
+
+  /* 时代主题 */
+  const html = document.documentElement;
+  ['theme-2007','theme-2009','theme-2011'].forEach(function(c){ html.classList.remove(c); });
+  html.classList.add(pg.era === '2012' ? 'theme-2011' : ('theme-' + (pg.era || '2007')));
+
+  /* 正文 */
+  const main = document.getElementById('main');
+  main.innerHTML = '';
+  try{
+    (RENDERERS[pg.kind] || RENDERERS.notfound)(main, pg, id, loc.params);
+  }catch(e){
+    logErr('render:' + id + ': ' + e.message);
+    main.appendChild(E('div', { class:'termbox' }, ['这个页面没有正确保存下来。', E('br'), '（原站这里可能也是这样。）']));
+  }
+
+  /* 面包屑 */
+  const crumb = document.getElementById('crumb');
+  crumb.innerHTML = '';
+  crumb.appendChild(A('home', SITE.name));
+  crumb.appendChild(txt(' › '));
+  crumb.appendChild(document.createTextNode(titleOf(pg, loc)));
+
+  /* 导航与页脚 */
+  renderNav(pg);
+  renderFooter(pg);
+
+  /* 标题（真实个人站的写法） */
+  document.title = SITE.name + ' | ' + titleOf(pg, loc);
+
+  /* 无障碍 / 面板状态 */
+  applyUI();
+  if(window.__DEBUG) renderDebug();
+  State.save();
+  window.scrollTo(0, 0);
+  Audio_.stopAll();
+}
+
+function renderNav(pg){
+  const nav = document.getElementById('nav');
+  nav.innerHTML = '';
+  nav.style.display = pg.noNav ? 'none' : '';
+  if(pg.noNav) return;
+  NAV.forEach(function(item, i){
+    if(i) nav.appendChild(E('span', { class:'sep' }, ['|']));
+    nav.appendChild(A(item.id, item.label));
+  });
+  /* 存档版本页面顶部提示：真实快照站会说明"这是存档" */
+  if(pg.kind === 'archiveYear' || pg.kind === 'archDiary' || pg.kind === 'archMusic' ||
+     pg.kind === 'archFriends' || pg.kind === 'shot'){
+    const bar = E('div', { class:'small dim', style:'text-align:center;padding:4px 0 0' },
+      ['这是旧页面存档，不是本站现在的样子。']);
+    nav.parentNode.insertBefore(bar, nav.nextSibling);
+    bar.id = 'archbar';
+  } else {
+    const old = document.getElementById('archbar');
+    if(old) old.remove();
+  }
+}
+
+function renderFooter(pg){
+  const f = document.getElementById('footer');
+  f.innerHTML = '';
+  const fl = E('div', null, []);
+  FOOTLINKS.forEach(function(item, i){
+    if(i) fl.appendChild(E('span', { class:'dim' }, [' · ']));
+    fl.appendChild(A(item.id, item.label));
+  });
+  f.appendChild(fl);
+
+  const era = pg.era;
+  let by = '本站由 ' + (era === '2012' ? '迟夏' : '陆知遥') + ' 制作';
+  if(era === '2012') by = '本站由 谷行 维护';
+  f.appendChild(E('div', { class:'byline' }, [by]));
+  f.appendChild(E('div', { class:'stamp' }, [
+    SITE.domain + ' · ' + (era === '2012' ? SITE.lastupd : '2009-03-11') + ' 最后更新'
+  ]));
+  if(era === '2012' && State.visitCount > 1){
+    f.appendChild(E('div', { class:'stamp', style:'margin-top:2px' },
+      ['这是你第 ' + State.visitCount + ' 次来。']));
+  }
+}
+
+/* ---------------- 各页面渲染器 ---------------- */
+const RENDERERS = {};
+
+/* ---- 首页 2007（默认入口）---- */
+RENDERERS.home = function(main, pg, id){
+  const era = pg.era;
+  const recent = DIARY.filter(function(e){ return !e.del; })
+                      .filter(function(e){ return e.d >= '2007-05-01' && e.d <= '2007-08-31'; })
+                      .sort(function(a,b){ return b.d.localeCompare(a.d); }).slice(0, 5);
+
+  if(era === '2007'){
+    main.appendChild(E('div', { class:'boxed' }, [
+      E('div', { class:'hello' }, ['随便记点东西。没什么好看的，来都来了。']),
+      E('h2', null, ['最近更新']),
+      E('ul', { class:'homelist' }, recent.map(function(e){
+        const li = E('li', null, []);
+        li.appendChild(txt('· ' + e.d + '　'));
+        li.appendChild(A('diary', e.title, { j:e.id }));
+        if(e.photos) li.appendChild(txt('　[照片 ' + e.photos.length + ' 张]'));
+        return li;
+      })),
+      E('h2', null, ['最近留言']),
+      E('ul', { class:'homelist' }, GUEST.g2007.slice(-4).reverse().map(function(m){
+        return E('li', null, ['· ' + m.name + '：' + m.tx.slice(0, 30)]);
+      })),
+      E('div', { class:'welcome-note', style:'margin-top:12px' }, [
+        '本站刚开，很多东西还没弄。留言板在左边。'
+      ])
+    ]));
+    const snd = E('div', { class:'small dim', style:'margin-top:10px' }, [
+      '首页有点声音，是从窗户外面录的。',
+      audioWidget('rain', '雨声（2007 版首页）', '0:03 循环')
+    ]);
+    main.appendChild(snd);
+  }
+
+  if(era === '2009'){
+    main.appendChild(E('div', null, [
+      E('div', { class:'hello' }, ['最近有点忙。']),
+      E('h2', null, ['最近更新']),
+      E('ul', { class:'homelist' }, DIARY.filter(function(e){ return !e.del && e.d >= '2009-01-01'; })
+        .sort(function(a,b){ return b.d.localeCompare(a.d); }).map(function(e){
+          const li = E('li');
+          li.appendChild(txt('· ' + e.d + '　'));
+          li.appendChild(A('diary', e.title, { j:e.id }));
+          return li;
+        })),
+      E('h2', null, ['最近留言']),
+      E('ul', { class:'homelist' }, GUEST.g2009.slice(-3).reverse().map(function(m){
+        return E('li', null, ['· ' + m.name + '：' + m.tx.slice(0, 30)]);
+      }))
+    ]));
+  }
+
+  if(era === '2012'){
+    /* 现在这一版：相册里那张站牌照片被挂在首页，没有任何说明 */
+    main.appendChild(E('div', null, [
+      E('div', { class:'small dim', style:'margin-bottom:10px' }, ['2011 年 8 月，路过拍的。']),
+      shotBlock('stop_2011.jpg', '（无说明）', '2011'),
+      E('h2', null, ['最近']),
+      E('ul', { class:'homelist' }, [
+        E('li', null, ['· 2013-06-02　本站不再更新。谢谢来过的人。']),
+        E('li', null, ['· 2012-06-30　有人认识这条线路沿线的站吗。（照片在上面）']),
+        E('li', null, ['· 2012-04-12　域名的注册人改成我了，续费方便点。'])
+      ]),
+      E('div', { class:'small dim', style:'margin-top:12px' }, [
+        '以后可能不太更新了。'
+      ]),
+      E('div', { style:'margin-top:12px' }, [
+        '首页的声音换过一个：',
+        audioWidget('rain2', '雨声（2011 版）', '0:04 循环')
+      ])
+    ]));
+  }
+};
+
+/* 首页 2007 的首版（/old/）：更粗糙 */
+RENDERERS.homeOld = function(main, pg){
+  main.innerHTML = '';
+  main.appendChild(E('div', { class:'center' }, [
+    E('div', { style:'font-size:22px;letter-spacing:.3em;margin:8px 0' }, ['折　页']),
+    E('div', { class:'small dim' }, ['把日子折进书页里']),
+    E('hr'),
+    E('div', { class:'center', style:'line-height:2' }, [
+      A('home', '首页'), txt(' | '), A('about2007', '关于我'), txt(' | '),
+      A('diary', '日记'), txt(' | '), A('photo', '相册'), txt(' | '),
+      A('music2007', '音乐'), txt(' | '), A('guest', '留言板')
+    ]),
+    E('hr')
+  ]));
+  main.appendChild(E('div', { class:'small' }, [
+    E('div', { style:'margin:8px 0' }, ['　　这个是首页。以前那个更丑，被我删了。']),
+    E('div', { style:'margin:8px 0' }, ['　　日记在左边。相册还没弄好。']),
+    E('div', { class:'dimmer', style:'margin:14px 0 0' }, [
+      '(C) 2006　陆知遥　做得丑，懒得改。'
+    ])
+  ]));
+};
+
+/* ---- 关于我 ---- */
+RENDERERS.about = function(main, pg){
+  const v = pg.ver;
+  main.innerHTML = '';
+  if(v === '2007'){
+    main.appendChild(E('div', { class:'boxed' }, [
+      E('h2', { style:'margin-top:0' }, ['关于我']),
+      E('table', { class:'small', style:'line-height:2' }, [
+        E('tbody', null, [
+          row('网名', '迟夏'),
+          row('真名', '陆知遥'),
+          row('生日', '8 月 9 日'),
+          row('学校', '成都某高校，2006 级'),
+          row('专业', '汉语言文学（读了个没用的）'),
+          row('相机', '还没买，在看'),
+          row('平时干的事', '拍照、睡觉、跟人贫嘴'),
+          row('邮箱', 'chixia@example.net')
+        ])
+      ]),
+      E('hr'),
+      E('div', { class:'small' }, [
+        '　　QQ 也在，不过我不常上。有事留言板说。',
+        E('br'),
+        '　　这个站是自己瞎弄的，模板是扒的，颜色我也不满意，慢慢改。',
+        E('br'),
+        E('br'),
+        E('span', { class:'dim' }, ['　　密码是我生日，别忘了。'])
+      ]),
+      E('div', { class:'small dim', style:'margin-top:12px' }, [
+        '（这个页面后来改过，现在的版本在 ',
+        A('about', '关于我'), '；旧地址是 /about/index.html。）'
+      ])
+    ]));
+  } else if(v === '2009'){
+    main.appendChild(E('div', null, [
+      E('h2', null, ['关于我']),
+      E('table', { class:'small', style:'line-height:2' }, [
+        E('tbody', null, [
+          row('网名', '迟夏'),
+          row('真名', '陆知遥'),
+          row('现在', '成都，做文案，住白果林'),
+          row('相机', '佳能 350D（二手）'),
+          row('手机', '换号了，群里发了'),
+          row('邮箱', 'chixia@example.net')
+        ])
+      ]),
+      E('p', { class:'small dim' }, ['　　这个页面 08 年改过一次。有些话说得太满了，删了。'])
+    ]));
+  } else {
+    main.appendChild(E('div', null, [
+      E('h2', null, ['关于我']),
+      E('table', { class:'small', style:'line-height:2' }, [
+        E('tbody', null, [
+          row('网名', '迟夏'),
+          row('现在', '四川，教书'),
+          row('相机', '借来的尼康 D80'),
+          row('邮箱', 'chixia@example.net'),
+          row('更新', '不定期，可能很久不更')
+        ])
+      ]),
+      E('p', { class:'small dim' }, ['　　这个站开了很久了，一直是我在弄。'])
+    ]));
+  }
+};
+function row(k, v){
+  return E('tr', null, [
+    E('td', { style:'padding-right:14px;color:var(--dim);white-space:nowrap;vertical-align:top' }, [k]),
+    E('td', null, [v])
+  ]);
+}
+
+/* ---- 日记索引 ---- */
+RENDERERS.diaryIdx = function(main, pg, id, params){
+  main.innerHTML = '';
+  const months = Object.keys(DIARY_MONTHS).sort().reverse();
+  const years = {};
+  months.forEach(function(k){ (years[k.slice(0,4)] = years[k.slice(0,4)] || []).push(k); });
+
+  if(params && params.j && params.m){
+    /* 直接跳到某一篇（搜索/链接用）：显示那一个月并高亮 */
+  }
+
+  main.appendChild(P('按月份存的。早期更新很勤，后来就懒了。', 'small dim'));
+
+  Object.keys(years).sort().reverse().forEach(function(y){
+    main.appendChild(E('h2', null, [y + ' 年']));
+    const box = E('div', { class:'yearlist' }, []);
+    years[y].sort().reverse().forEach(function(k){
+      const list = DIARY_MONTHS[k].map(function(eid){
+        return DIARY.filter(function(e){ return e.id === eid; })[0];
+      });
+      const hasDel = DIARY.some(function(e){ return e.del && e.d.slice(0,7) === k; });
+      const li = E('div', { class:'rec' }, []);
+      li.appendChild(E('span', { class:'dt' }, [fmtMonth(k)]));
+      li.appendChild(A('diaryMonth', list.length + ' 篇', { m:k }));
+      if(hasDel && State.flags.foundRoute_archive) li.appendChild(E('span', { class:'dimmer small' }, ['（这个月还有几篇，删了）']));
+      box.appendChild(li);
+    });
+    main.appendChild(box);
+  });
+};
+
+/* ---- 日记（按月 / 单篇）---- */
+RENDERERS.diary = function(main, pg, id, params){
+  main.innerHTML = '';
+  const single = params && params.j;
+  const month = monthOfRoute(currentRoute().route, params);
+
+  if(single){
+    const e = DIARY.filter(function(x){ return x.id === single; })[0];
+    if(!e){ main.appendChild(notFoundBox()); return; }
+    if(e.del && !State.flags.sawArchive){
+      main.appendChild(E('div', { class:'termbox' }, [
+        '这一篇已经删除了。', E('br'), '（2009-11-08）'
+      ]));
+      main.appendChild(E('div', { class:'small', style:'margin-top:10px' }, [
+        '存档里还有：', A('a2009diary', '2008 年那几篇')
+      ]));
+      return;
+    }
+    main.appendChild(entryBlock(e, true, params.q));
+    if(params.q) setTimeout(function(){ scrollToId(e.id); }, 60);
+    return;
+  }
+
+  const keys = Object.keys(DIARY_MONTHS).sort().reverse();
+
+  if(month){
+    main.appendChild(E('h2', { style:'margin-top:0' }, [fmtMonth(month)]));
+    const ids = DIARY_MONTHS[month] || [];
+    if(!ids.length){
+      main.appendChild(P('这个月没有东西。', 'small dim'));
+    }
+    ids.map(function(eid){
+      return DIARY.filter(function(e){ return e.id === eid; })[0];
+    }).sort(function(a,b){ return a.d.localeCompare(b.d); }).forEach(function(e){
+      main.appendChild(entryBlock(e, false, params.q));
+    });
+    /* 上一个 / 下一个月的链接，像真站的月份导航 */
+    const idx = keys.indexOf(month);
+    const prev = keys[idx + 1], next = keys[idx - 1];
+    const nav = E('div', { class:'small', style:'margin-top:16px' }, []);
+    if(prev) nav.appendChild(A('diaryMonth', '← ' + fmtMonth(prev), { m:prev }));
+    if(prev && next) nav.appendChild(txt('　·　'));
+    if(next) nav.appendChild(A('diaryMonth', fmtMonth(next) + ' →', { m:next }));
+    main.appendChild(nav);
+    main.appendChild(E('div', { class:'small dim', style:'margin-top:6px' }, [
+      A('diary', '全部月份')
+    ]));
+    return;
+  }
+
+  /* 没给月份：显示最近三个月 + 月份列表 */
+  keys.slice(0, 3).forEach(function(k){
+    main.appendChild(E('h2', null, [fmtMonth(k)]));
+    DIARY_MONTHS[k].map(function(eid){
+      return DIARY.filter(function(e){ return e.id === eid; })[0];
+    }).sort(function(a,b){ return a.d.localeCompare(b.d); }).forEach(function(e){
+      main.appendChild(entryBlock(e, false));
+    });
+  });
+  main.appendChild(E('div', { class:'small dim', style:'margin-top:14px' }, [
+    '更早的和更晚的都在 ', A('diary', '月份列表'), ' 里。'
+  ]));
+  const all = E('div', { class:'yearlist small', style:'margin-top:8px' });
+  keys.forEach(function(k){
+    all.appendChild(E('span', null, [A('diaryMonth', fmtMonth(k), { m:k }), txt('　')]));
+  });
+  main.appendChild(all);
+};
+
+function entryBlock(e, big, hl){
+  const box = E('div', { class:'entry', id:e.id }, []);
+  box.appendChild(E('div', { class:'meta' }, [
+    E('span', { class:'d' }, [e.d]),
+    e.w ? txt('（' + e.w + '）') : null,
+    txt('　'),
+    E('span', { class:'tagline' }, [e.title])
+  ]));
+  const body = E('div', { class:'body' });
+  String(e.body).split('\n').forEach(function(line){
+    const div = E('div', null, []);
+    if(line === ''){ div.appendChild(txt('\u00a0')); }
+    else if(hl){ highlight(line, hl).forEach(function(n){ div.appendChild(n); }); }
+    else div.appendChild(txt(line));
+    body.appendChild(div);
+  });
+  box.appendChild(body);
+  if(e.photos && e.photos.length){
+    box.appendChild(E('div', { class:'small', style:'margin-top:6px' }, [
+      '照片：' + e.photos.join('、')
+    ]));
+  }
+  if(e.notes) box.appendChild(E('div', { class:'notes' }, [e.notes]));
+  if(e.del) box.appendChild(E('div', { class:'notes dimmer' }, ['（这一篇 2009-11-08 删除，这里是存档）']));
+  return box;
+}
+
+/* ---- 相册索引 ---- */
+RENDERERS.photoIdx = function(main, pg){
+  main.innerHTML = '';
+  main.appendChild(P('按时间分的，一共四组。图压得狠，放大看不了。', 'small dim'));
+  main.appendChild(E('ul', { class:'homelist' }, ALBUMS.map(function(a){
+    return E('li', null, [A(a.page, a.title), txt('　'), E('span', { class:'dim small' }, [a.d + '　' + a.items.length + ' 张'])]);
+  })));
+  main.appendChild(E('div', { class:'small dim', style:'margin-top:10px' }, [
+    '有一组旧照片换过，放在 ', A('photoOld', '旧相册'), ' 里了。'
+  ]));
+};
+
+/* ---- 相册分组 ---- */
+RENDERERS.album = function(main, pg){
+  main.innerHTML = '';
+  const a = ALBUMS.filter(function(x){ return x.page === pg.id; })[0];
+  if(!a){ main.appendChild(notFoundBox()); return; }
+  main.appendChild(E('h2', { style:'margin-top:0' }, [a.title]));
+  main.appendChild(E('div', { class:'small dim' }, [a.d]));
+  const wrap = E('div', { class:'album' }, []);
+  a.items.forEach(function(it){ wrap.appendChild(photoFig(it, pg.era)); });
+  main.appendChild(wrap);
+  main.appendChild(E('div', { class:'small dim', style:'margin-top:14px' }, [
+    '一共 ' + a.items.length + ' 张。' + (a.items.length <= 2 ? '后来没怎么拍。' : '')
+  ]));
+};
+
+function photoFig(it, era){
+  const fig = E('figure', { class:'shot', id:it.f, style:'margin:0' }, []);
+  const frame = E('div', { class:'frame' }, []);
+  const c = renderPhotoCanvas(it.f, it.cap + ' ' + (it.f.indexOf('hand') >= 0 ? 'hand_a' : ''), era);
+  c.setAttribute('role', 'img');
+  c.setAttribute('aria-label', '照片：' + (it.cap || it.f));
+  frame.appendChild(c);
+  fig.appendChild(frame);
+  const cap = E('figcaption', { class:'cap' }, []);
+  cap.appendChild(txt(it.cap || '（没写说明）'));
+  fig.appendChild(cap);
+  fig.appendChild(E('div', { class:'fn' }, [it.f]));
+  const zoom = E('a', { href:'#', class:'zoom' }, ['放大']);
+  zoom.addEventListener('click', function(ev){ ev.preventDefault(); openViewer(it, era); });
+  fig.appendChild(zoom);
+  return fig;
+}
+
+function shotBlock(fn, cap, era){
+  const fig = E('figure', { class:'shot', style:'margin:0;width:100%' }, []);
+  const frame = E('div', { class:'frame' }, []);
+  const c = renderPhotoCanvas(fn, cap, era);
+  c.setAttribute('role', 'img');
+  c.setAttribute('aria-label', '照片：' + cap);
+  frame.appendChild(c); fig.appendChild(frame);
+  fig.appendChild(E('figcaption', { class:'cap' }, [cap]));
+  const zoom = E('a', { href:'#', class:'zoom' }, ['放大']);
+  zoom.addEventListener('click', function(ev){ ev.preventDefault(); openViewer({ f:fn, cap:cap }, era); });
+  fig.appendChild(zoom);
+  return fig;
+}
+
+/* 放大：照片 + 文件名 + 拍摄信息（EXIF 全部虚构） */
+function openViewer(it, era){
+  closeViewer();
+  const v = E('div', { id:'viewer', role:'dialog', 'aria-label':'照片：' + (it.cap||it.f) }, []);
+  const inner = E('div', { class:'inner' }, []);
+  const c = renderPhotoCanvas(it.f, it.cap, era);
+  c.style.width = 'auto';
+  inner.appendChild(c);
+  inner.appendChild(E('div', { class:'vcap' }, [
+    (it.cap || '（没写说明）'),
+    E('br'),
+    E('span', { class:'mono small' }, [it.f])
+  ]));
+  if(it.exif){
+    inner.appendChild(E('div', { class:'filelist small', style:'margin-top:6px' }, [
+      '相机：' + it.exif[0], E('br'),
+      '光圈：' + it.exif[1] + '　快门：' + it.exif[2] + '　ISO：' + it.exif[3], E('br'),
+      '尺寸：' + it.exif[4]
+    ]));
+  }
+  const bar = E('div', { class:'vbar' }, []);
+  const close = E('button', { class:'btn' }, ['关闭']);
+  close.addEventListener('click', closeViewer);
+  bar.appendChild(close);
+  inner.appendChild(bar);
+  v.appendChild(inner);
+  v.addEventListener('click', function(ev){ if(ev.target === v) closeViewer(); });
+  document.body.appendChild(v);
+  const esc = function(ev){ if(ev.key === 'Escape'){ closeViewer(); document.removeEventListener('keydown', esc); } };
+  document.addEventListener('keydown', esc);
+  close.focus();
+}
+function closeViewer(){
+  const v = document.getElementById('viewer');
+  if(v) v.parentNode.removeChild(v);
+}
+
+/* ---- 旧相册（含被换掉的照片）---- */
+RENDERERS.photoOld = function(main, pg){
+  main.innerHTML = '';
+  main.appendChild(E('h2', { style:'margin-top:0' }, ['旧相册']));
+  main.appendChild(P('这几个是 07 年放上来过的，后来换掉了。原来那个更好的没有了。', 'small dim'));
+  const wrap = E('div', { class:'album' }, []);
+  ALBUM_GHOSTS.forEach(function(it){ wrap.appendChild(photoFig(it, pg.era)); });
+  main.appendChild(wrap);
+  main.appendChild(E('div', { class:'small dim', style:'margin-top:16px' }, [
+    '现在的相册在 ', A('photo', '相册'), '。'
+  ]));
+};
+
+/* ---- 音乐 ---- */
+RENDERERS.music = function(main, pg){
+  main.innerHTML = '';
+  const list = MUSIC.filter(function(m){ return m.page === pg.id; });
+  main.appendChild(P('自己录的，音质都不好。有的文件传坏了。', 'small dim'));
+  list.forEach(function(m){
+    const t = E('div', { class:'track' + (m.kind === 'broken' ? ' broken' : ''), id:m.id }, []);
+    t.appendChild(E('div', { class:'t' }, [m.t]));
+    t.appendChild(E('div', { class:'by' }, [m.by + '　' + m.d + '　' + (m.dur || '') + '　' + m.size]));
+    if(m.kind === 'broken'){
+      t.appendChild(E('div', { class:'info' }, ['文件已损坏，前 4 秒能放。']));
+      t.appendChild(E('div', { class:'small dim', style:'margin:4px 0' }, [
+        audioWidget('hum', '（只放了前 4 秒）', '后面全是杂音，没剪')
+      ]));
+    } else {
+      t.appendChild(E('div', { style:'margin:4px 0' }, [
+        audioWidget(m.patch, m.t, '（约 6 秒试听）')
+      ]));
+    }
+    /* 波形图：没有声音也能"看"出两版不一样 —— 无障碍要求 */
+    if(/二站台|雨声/.test(m.t)){
+      t.appendChild(waveform(m.id, m.t));
+      t.appendChild(E('div', { class:'small dim' }, ['波形是量出来的，不是画的。']));
+    }
+    if(m.note) t.appendChild(E('div', { class:'small dim' }, [m.note]));
+    main.appendChild(t);
+  });
+  const more = E('div', { class:'small', style:'margin-top:12px' }, []);
+  if(pg.id === 'music2007') more.appendChild(E('span', null, ['2008 年录的那几首在 ', A('music2008', '这里'), '。']));
+  if(pg.id === 'music2009') more.appendChild(E('span', null, ['找不到 `春天` 的完整版了，只有那个坏文件。']));
+  if(pg.id === 'music2007') more.appendChild(E('span', null, ['　最近的 ', A('musicNow', '在那边'), '。']));
+  main.appendChild(more);
+};
+
+/* 波形图：用固定种子的数据画，两版参数不同 → 肉眼可辨 */
+function waveform(seedName, label){
+  const W = 420, H = 52;
+  const c = E('canvas', { class:'wave', width:W, height:H });
+  c.setAttribute('role', 'img');
+  c.setAttribute('aria-label', '波形图：' + label);
+  setTimeout(function(){
+    const g = c.getContext('2d');
+    const r = rng(seedOf('wave:' + seedName));
+    const fast = /2007|2008/.test(seedName + label) ? 1 : 0.72;   /* 第二版更慢 */
+    const breathe = /重录|2011/.test(label) ? 9 : 15;            /* 换气位置不同 */
+    g.fillStyle = '#fafafa'; g.fillRect(0,0,W,H);
+    g.strokeStyle = 'rgba(30,60,110,0.75)'; g.lineWidth = 1;
+    g.beginPath();
+    for(let x=0;x<W;x++){
+      const env = (0.34 + 0.30 * Math.abs(Math.sin(x / breathe + r()*0.05))) * fast;
+      const y = H/2 - Math.sin(x * 0.42) * env * (H/2.4);
+      x === 0 ? g.moveTo(x, y) : g.lineTo(x, y);
+    }
+    g.stroke();
+    g.strokeStyle = 'rgba(30,60,110,0.35)';
+    g.beginPath();
+    for(let x=0;x<W;x++){
+      const env = (0.34 + 0.30 * Math.abs(Math.sin(x / breathe))) * fast;
+      const y = H/2 + Math.sin(x * 0.42 + 0.6) * env * (H/2.4);
+      x === 0 ? g.moveTo(x, y) : g.lineTo(x, y);
+    }
+    g.stroke();
+    g.strokeStyle = 'rgba(0,0,0,0.10)';
+    g.beginPath(); g.moveTo(0, H/2); g.lineTo(W, H/2); g.stroke();
+  }, 0);
+  return c;
+}
+
+/* ---- 留言板 ---- */
+RENDERERS.guest = function(main, pg){
+  main.innerHTML = '';
+  const list = GUEST[pg.which] || [];
+  main.appendChild(P('留言不用注册。有时候会被垃圾广告刷，我删得慢。', 'small dim'));
+  const box = E('div', { class:'gbook' }, []);
+  list.forEach(function(m, i){
+    box.appendChild(guestMsg(m, pg.which + '-m' + i, pg.era));
+  });
+  main.appendChild(box);
+
+  if(pg.which === 'g2007'){
+    main.appendChild(E('div', { class:'small dim', style:'text-align:center;margin-top:16px;border-top:1px solid var(--line);padding-top:8px' }, [
+      GUEST_FOOT_2007
+    ]));
+  }
+  /* 留言表单：只在"现在"这一版出现 */
+  if(pg.which === 'gNow'){
+    main.appendChild(guestForm());
+  }
+};
+
+function guestMsg(m, anchor, era){
+  const cls = 'gm' + (m.t === 'rep' ? ' reply' : '') + (m.by === 'anon' ? ' anon' : '');
+  const box = E('div', { class:cls, id:anchor }, []);
+  box.appendChild(E('div', { class:'hd' }, [
+    E('b', null, [m.name]),
+    txt('　' + m.d)
+  ]));
+  box.appendChild(E('div', { class:'tx' }, [m.tx]));
+  if(m.note) box.appendChild(E('div', { class:'small dimmer' }, [m.note]));
+  return box;
+}
+
+function guestForm(){
+  const f = E('div', { class:'gform' }, []);
+  f.appendChild(E('h2', null, ['写一句']));
+  f.appendChild(E('div', { class:'small dim' }, ['名字可以不写。']));
+  const name = E('input', { type:'text', maxlength:'16', 'aria-label':'你的名字' });
+  const tx = E('textarea', { maxlength:'200', 'aria-label':'留言内容' });
+  f.appendChild(E('label', { for:'gname' }, ['名字']));
+  f.appendChild(name);
+  f.appendChild(E('label', { for:'gtx' }, ['内容']));
+  f.appendChild(tx);
+  const btn = E('button', { class:'btn', style:'margin-top:8px' }, ['提交']);
+  const out = E('div', { style:'margin-top:10px' }, []);
+  btn.addEventListener('click', function(){
+    const body = tx.value.trim();
+    if(!body){ out.textContent = '还没写东西。'; return; }
+    const n = (name.value.trim() || '过路的人');
+    GUEST.gNow.push({ d: nowStamp(), by:'me', name:n, tx:body });
+    State.flags.playerPosted = true;
+    /* 重新渲染留言板 */
+    State.save(); render();
+    const el = document.getElementById('guestNow-m' + (GUEST.gNow.length - 1));
+    if(el) el.scrollIntoView();
+  });
+  f.appendChild(btn);
+  f.appendChild(out);
+  return f;
+}
+
+function nowStamp(){
+  const d = new Date();
+  function z(n){ return (n<10?'0':'') + n; }
+  return d.getFullYear() + '-' + z(d.getMonth()+1) + '-' + z(d.getDate()) + ' ' + z(d.getHours()) + ':' + z(d.getMinutes());
+}
+
+/* ---- 友链 ---- */
+RENDERERS.friends = function(main, pg){
+  main.innerHTML = '';
+  const f = FRIENDS[pg.which];
+  main.appendChild(E('h2', { style:'margin-top:0' }, [pg.title]));
+  main.appendChild(P(f.note, 'small dim'));
+  const box = E('div', null, []);
+  f.list.forEach(function(it){
+    const row = E('div', { class:'rec', id:it.anchor || null }, []);
+    row.appendChild(E('b', null, [it.n]));
+    row.appendChild(txt('　'));
+    row.appendChild(E('span', { class:'mono small dim' }, [it.u]));
+    if(it.d) row.appendChild(E('div', { class:'small dim', style:'margin-left:1.2em' }, [it.d]));
+    if(it.note) row.appendChild(E('div', { class:'small dimmer', style:'margin-left:1.2em' }, [it.note]));
+    box.appendChild(row);
+  });
+  main.appendChild(box);
+  if(f.gone) main.appendChild(E('div', { class:'small dimmer', style:'margin-top:12px' }, [f.gone]));
+  main.appendChild(E('div', { class:'small', style:'margin-top:14px' }, [
+    '想换链的留言板说。看 ', A('guest', '留言板'), '。'
+  ]));
+};
+
+/* ---- 收藏 ---- */
+RENDERERS.links = function(main, pg){
+  main.innerHTML = '';
+  main.appendChild(P(LINKS.note, 'small dim'));
+  LINKS.groups.forEach(function(g){
+    main.appendChild(E('h2', null, [g.g]));
+    main.appendChild(E('ul', { class:'homelist' }, g.list.map(function(it){
+      return E('li', null, [it.n, E('span', { class:'small dim' }, ['　' + (it.d||'')])]);
+    })));
+  });
+  main.appendChild(E('div', { class:'small dimmer', style:'margin-top:14px' }, [
+    '（这些站早就不在了，地址我留着没删。）'
+  ]));
+};
+
+/* ---- 下载 ---- */
+RENDERERS.download = function(main, pg){
+  main.innerHTML = '';
+  main.appendChild(P('没什么好东西。要就拿走。', 'small dim'));
+  const list = E('div', { class:'filelist' }, []);
+  DOWNLOADS.forEach(function(d, i){
+    const row = E('div', { id:'dl' + i }, []);
+    row.appendChild(txt('· '));
+    row.appendChild(A('download', d.f));
+    row.appendChild(E('span', { class:'sz' }, ['　' + d.sz + '　' + d.d]));
+    row.appendChild(E('div', { class:'small dim', style:'margin-left:1.2em' }, [d.note]));
+    list.appendChild(row);
+  });
+  main.appendChild(list);
+  main.appendChild(E('div', { class:'small warn', style:'margin-top:12px' }, [
+    '注：这里所有链接都点不动，文件早没了。留着当个目录看。'
+  ]));
+};
+
+/* ---- 联系我 ---- */
+RENDERERS.contact = function(main, pg){
+  main.innerHTML = '';
+  main.appendChild(E('table', { class:'small', style:'line-height:2' }, [
+    E('tbody', null, [
+      row('邮箱', 'chixia@example.net'),
+      row('留言板', '这个最快'),
+      row('QQ', '不常上'),
+      row('地址', '不写了')
+    ])
+  ]));
+  main.appendChild(E('p', { class:'small dim' }, ['　　邮箱是十年前注册的，现在还能收。']));
+};
+
+/* ---- 更新记录 ---- */
+RENDERERS.log = function(main, pg){
+  main.innerHTML = '';
+  main.appendChild(P('每次改了什么就记一笔，怕自己忘了。', 'small dim'));
+  const box = E('div', null, []);
+  LOG.forEach(function(l, i){
+    const r = E('div', { class:'rec', id:'log' + i }, []);
+    r.appendChild(E('span', { class:'dt' }, [l.d]));
+    r.appendChild(txt(l.t));
+    box.appendChild(r);
+  });
+  main.appendChild(box);
+  main.appendChild(E('div', { class:'small dim', style:'margin-top:14px' }, [
+    '最近这条是 2013-06-02。之后没有了。'
+  ]));
+};
+
+/* ---- 存档索引 ---- */
+RENDERERS.archive = function(main, pg){
+  main.innerHTML = '';
+  main.appendChild(P('以前几次改版前的样子，我留了快照。有的页面现在没有了，快照里还有。', 'small dim'));
+  const box = E('div', { class:'archrow' }, []);
+  [
+    { id:'a2007', t:'2007 年 11 月', d:'最老的那一版，表格全是歪的。' },
+    { id:'a2009', t:'2009 年 3 月', d:'停更之前的样子。' }
+  ].forEach(function(a){
+    const r = E('div', { class:'rec' }, []);
+    r.appendChild(A(a.id, a.t));
+    r.appendChild(E('span', { class:'small dim' }, ['　' + a.d]));
+    box.appendChild(r);
+  });
+  main.appendChild(box);
+  main.appendChild(E('div', { class:'small dim', style:'margin-top:12px' }, [
+    '有两个页面只做了截图，点进去是图片。'
+  ]));
+  main.appendChild(E('div', { class:'small', style:'margin-top:8px' }, [
+    A('shot2007', '首页截图（2007-11-03）'), txt('　'), A('shot2009', '首页截图（2009-03-11）')
+  ]));
+};
+
+RENDERERS.archiveYear = function(main, pg){
+  main.innerHTML = '';
+  const y = pg.year;
+  main.appendChild(E('h2', { style:'margin-top:0' }, [y + ' 年的样子']));
+  main.appendChild(P('这一版是从快照恢复的。导航、颜色、字号都是当时的。', 'small dim'));
+
+  if(y === '2007'){
+    main.appendChild(E('div', { class:'boxed e2007' }, [
+      E('div', { class:'hdrbar' }, ['折页 · 2007-11-03 快照']),
+      E('div', { class:'small', style:'padding:8px 0;line-height:2' }, [
+        A('homeOld', '首页'), txt(' | '), A('about2007', '关于我'), txt(' | '),
+        A('diary', '日记'), txt(' | '), A('photo2007', '相册'), txt(' | '),
+        A('music2007', '音乐'), txt(' | '), A('guest', '留言板'), txt(' | '),
+        A('friends', '链接')
+      ]),
+      E('hr'),
+      E('div', { class:'marq' }, ['公告：本站刚搬家，图可能加载不出来，刷新一下。']),
+      E('div', { class:'small', style:'margin-top:8px' }, [
+        '这个快照里能翻到的东西：',
+        E('ul', { class:'homelist' }, [
+          E('li', null, [A('photo2007', '相册 - 夏天（2007）'), txt('（里面有一张后来被换掉的）')]),
+          E('li', null, [A('music2007', '音乐'), txt('（那时候传的那几首）')]),
+          E('li', null, [A('guest', '留言板'), txt('（最早的那些留言）')])
+        ])
+      ])
+    ]));
+    main.appendChild(E('div', { class:'small dim', style:'margin-top:12px' }, [
+      '注：快照里的友情链接有 ', A('friends', '小满的小站'), '，现在没有了。'
+    ]));
+  } else {
+    main.appendChild(E('div', { class:'boxed' }, [
+      E('div', { class:'hdrbar' }, ['折页 · 2009-03-11 快照']),
+      E('div', { class:'small', style:'padding:8px 0;line-height:2' }, [
+        A('home2009', '首页'), txt(' | '), A('about', '关于我'), txt(' | '),
+        A('diary', '日记'), txt(' | '), A('photo2009', '相册'), txt(' | '),
+        A('music2009', '音乐'), txt(' | '), A('guest2009', '留言板'), txt(' | '),
+        A('friendsOld', '链接')
+      ]),
+      E('hr'),
+      E('div', { class:'small' }, [
+        '快照里能翻到的：',
+        E('ul', { class:'homelist' }, [
+          E('li', null, [A('a2009diary', '被删掉的那几篇'), txt('（08 年写的，11 月删的）')]),
+          E('li', null, [A('a2009music', '2008 年录的那几首'), txt('（现在的音乐页里没有了）')]),
+          E('li', null, [A('a2009friends', '当时的友情链接'), txt('（多一个）')])
+        ])
+      ])
+    ]));
+  }
+};
+
+/* 存档：被删的日记 */
+RENDERERS.archDiary = function(main, pg){
+  main.innerHTML = '';
+  State.flags.sawArchive = true;
+  main.appendChild(E('h2', { style:'margin-top:0' }, ['快照里的日记（2008 年）']));
+  main.appendChild(P('这几篇在 2009-11-08 被删了。快照是完整的。', 'small dim'));
+  DIARY.filter(function(e){ return e.del; })
+       .sort(function(a,b){ return a.d.localeCompare(b.d); })
+       .forEach(function(e){ main.appendChild(entryBlock(e, true)); });
+};
+
+/* 存档：被删的音乐 */
+RENDERERS.archMusic = function(main, pg){
+  main.innerHTML = '';
+  State.flags.sawArchive = true;
+  main.appendChild(E('h2', { style:'margin-top:0' }, ['快照里的音乐（2008）']));
+  main.appendChild(P('这两首现在的音乐页里没有了。', 'small dim'));
+  const list = E('div', null, []);
+  MUSIC.filter(function(m){ return m.page === 'music2008'; }).forEach(function(m){
+    const t = E('div', { class:'track' }, []);
+    t.appendChild(E('div', { class:'t' }, [m.t]));
+    t.appendChild(E('div', { class:'by' }, [m.by + '　' + m.d + '　' + m.dur + '　' + m.size]));
+    t.appendChild(E('div', { style:'margin:4px 0' }, [audioWidget(m.patch, m.t, '（约 6 秒试听）')]));
+    t.appendChild(waveform(m.id, m.t));
+    t.appendChild(E('div', { class:'small dim' }, [m.note]));
+    list.appendChild(t);
+    /* 这一首是"消失的那首"：2009 年页面上被替换掉了 */
+  });
+  main.appendChild(list);
+  main.appendChild(E('div', { class:'small warn', style:'margin-top:12px' }, [
+    '这两首原来的文件在 2009 年被换成了别的，快照里还能放。'
+  ]));
+};
+
+/* 存档：当时的友链（含那个后来消失的链接）*/
+RENDERERS.archFriends = function(main, pg){
+  main.innerHTML = '';
+  State.flags.sawArchive = true;
+  const f = FRIENDS.f2009;
+  main.appendChild(E('h2', { style:'margin-top:0' }, ['快照里的友情链接（2009-03）']));
+  main.appendChild(P(f.note, 'small dim'));
+  const box = E('div', null, []);
+  f.list.forEach(function(it){
+    const row = E('div', { class:'rec', id:it.anchor || null }, []);
+    row.appendChild(E('b', null, [it.n]));
+    row.appendChild(txt('　'));
+    row.appendChild(E('span', { class:'mono small dim' }, [it.u]));
+    if(it.d) row.appendChild(E('div', { class:'small dim', style:'margin-left:1.2em' }, [it.d]));
+    box.appendChild(row);
+  });
+  main.appendChild(box);
+  main.appendChild(E('div', { class:'small dim', style:'margin-top:14px' }, [
+    '现在这一版的 ', A('friendsNow', '朋友'), ' 里，第三个链接没有了。'
+  ]));
+};
+
+/* 存档：截图 */
+RENDERERS.shot = function(main, pg){
+  main.innerHTML = '';
+  const s = SHOTS.filter(function(x){ return x.page === pg.id; })[0];
+  if(!s){ main.appendChild(notFoundBox()); return; }
+  main.appendChild(E('h2', { style:'margin-top:0' }, ['首页截图']));
+  main.appendChild(P('当时只截了图，页面本身没存。', 'small dim'));
+  const c = renderPhotoCanvas(s.f, s.cap, pg.era);
+  c.style.maxWidth = '100%';
+  c.setAttribute('role', 'img');
+  c.setAttribute('aria-label', s.cap);
+  main.appendChild(E('div', { class:'frame', style:'display:inline-block;margin-top:8px' }, [c]));
+  main.appendChild(E('div', { class:'fn small', style:'margin-top:4px' }, [s.f]));
+  main.appendChild(E('div', { class:'small dim', style:'margin-top:8px' }, [s.cap]));
+};
+
+/* ---- 访客（Meta 承载页）---- */
+RENDERERS.memo = function(main, pg){
+  main.innerHTML = '';
+  main.appendChild(E('h2', { style:'margin-top:0' }, ['访客记录']));
+  main.appendChild(P('这是站上的一个小统计，只记在这台机器上。别人看不到你的。', 'small dim'));
+
+  const box = E('div', { class:'filelist' }, []);
+  box.appendChild(E('div', null, ['开站以来：' + SITE.counterBase + ' 次']));
+  box.appendChild(E('div', null, ['这一台机器来过：' + State.visitCount + ' 次']));
+  if(State.firstSeen) box.appendChild(E('div', null, ['第一次来：' + State.firstSeen]));
+  box.appendChild(E('div', null, ['翻过的页面：' + State.count() + ' 个']));
+  if(State.searches.length){
+    box.appendChild(E('div', null, ['你找过：' + State.searches.slice(-8).join('、')]));
+  }
+  if(State.foundRoutes.length){
+    box.appendChild(E('div', null, ['你自己走到过的：' + State.foundRoutes.slice(-10).join('、')]));
+  }
+  main.appendChild(box);
+
+  main.appendChild(E('h2', null, ['很久以前的记录']));
+  main.appendChild(E('div', { class:'termbox' }, [
+    '2013-08-11 04:12  180.***.**.47   3 个页面',
+    '2013-08-11 04:15  180.***.**.47   11 个页面',
+    '2013-08-12 22:03  180.***.**.47   26 个页面',
+    '（这一条之后再没有人来过。）'
+  ]));
+  main.appendChild(E('div', { class:'small dim', style:'margin-top:10px' }, [
+    '这条记录不是你的。你的在上面。'
+  ]));
+  if(State.visitCount > 1){
+    main.appendChild(E('div', { class:'small dimmer', style:'margin-top:8px' }, [
+      '你又来了。'
+    ]));
+  }
+};
+
+/* ---- 404 ---- */
+RENDERERS.notfound = function(main, pg, id, params){
+  main.innerHTML = '';
+  const loc = currentRoute();
+  main.appendChild(E('h2', { style:'margin-top:0' }, [NOTFOUND.title]));
+  NOTFOUND.lines.forEach(function(l){ main.appendChild(P(l, 'small')); });
+  main.appendChild(E('div', { class:'termbox', style:'margin-top:12px' }, [
+    '请求的路径：' + (loc.route || '/')
+  ]));
+  main.appendChild(E('div', { class:'small', style:'margin-top:12px' }, [
+    '回到 ', A('home', '首页'), '。'
+  ]));
+};
+
+function notFoundBox(){
+  return E('div', { class:'termbox' }, ['这个页面在快照里没有。']);
+}
+
+/* ===== js/80-app.js ===== */
+/* ============================================================
+   《折页清》 — 启动 / 站内搜索页 / 调试面板 / 无障碍设置
+   ============================================================ */
+
+window.__BUILD__ = '2026-10-01 13:50';
+
+/* ---------------- 调试开关：?debug=1 或 #/xxx?debug=1 ---------------- */
+window.__DEBUG = (function(){
+  try{
+    if(new URLSearchParams(location.search).get('debug') === '1') return true;
+    if(/(^|[?&#])debug=1/.test(location.hash)) return true;
+  }catch(e){}
+  return false;
+})();
+
+/* ---------------- 状态初始化的收尾（load 在 60-state.js 定义）---------------- */
+State.load();
+State.visitCount = State.visitCount || 0;
+State.firstSeen = State.firstSeen || todayStr();
+/* 站点的"现在"锚定在很久以后；不随每次刷新变化，这样存档才有意义 */
+State.epoch = State.epochSet || (State.epochSet = '2026-03-08');
+
+function todayStr(){
+  const d = new Date();
+  function z(n){ return (n<10?'0':'')+n; }
+  return d.getFullYear() + '-' + z(d.getMonth()+1) + '-' + z(d.getDate());
+}
+
+State.visitCount++;
+if(State.visitCount > 1) State.returning = true;
+
+/* 记录访问过的页面 */
+State.touch = function(id){
+  const first = !this.visited[id];
+  this.visited[id] = (this.visited[id] || 0) + 1;
+  if(first) this.save();
+  return first;
+};
+State.pushHistory = function(id){
+  this.historyLog.push({ id:id, t:new Date().toISOString() });
+  if(this.historyLog.length > 120) this.historyLog.shift();
+};
+
+/* ---------------- 无障碍 / 显示设置 ---------------- */
+function applyUI(){
+  const h = document.documentElement;
+  const u = State.ui;
+  h.classList.remove('fs-l','fs-xl');
+  if(u.fs === 'l') h.classList.add('fs-l');
+  if(u.fs === 'xl') h.classList.add('fs-xl');
+  h.classList.toggle('no-anim', !u.anim);
+  h.classList.toggle('no-flash', !u.flash);
+  h.classList.toggle('contrast', !!u.contrast);
+  Audio_.enabled = !!State.sound;
+}
+
+/* ---------------- 工具条与面板 ---------------- */
+function buildChrome(){
+  /* 右下角工具（极克制，不用"菜单"这个词） */
+  const tools = E('div', { id:'tools' }, []);
+  const mk = function(label, fn, aria){
+    const a = E('a', { href:'#', 'aria-label':aria || label }, [label]);
+    a.addEventListener('click', function(ev){ ev.preventDefault(); fn(); });
+    return a;
+  };
+  tools.appendChild(mk('找东西', function(){ toggleSearch(); }, '在站内搜索'));
+  tools.appendChild(mk('设置', function(){ togglePanel(); }, '显示与无障碍设置'));
+  document.body.appendChild(tools);
+
+  /* 声音开关（2007 年个人站审美：一个小图标） */
+  const snd = E('div', { id:'snd' }, []);
+  const sa = E('a', { href:'#', title:'声音', 'aria-label':'打开或关闭本站声音' }, ['🔈']);
+  sa.addEventListener('click', function(ev){
+    ev.preventDefault();
+    State.sound = !State.sound;
+    Audio_.enabled = State.sound;
+    if(!State.sound) Audio_.stopAll();
+    sa.textContent = State.sound ? '🔊' : '🔈';
+    State.save();
+  });
+  sa.textContent = State.sound ? '🔊' : '🔈';
+  snd.appendChild(sa);
+  document.body.appendChild(snd);
+
+  /* 设置面板（默认隐藏；隐藏时连内容都不生成，
+     免得读屏软件在没有 aria-hidden 保护的情况下先读到一堆控件） */
+  document.body.appendChild(E('div', { id:'panel', class:'hide', 'aria-hidden':'true',
+    role:'dialog', 'aria-label':'设置' }, [
+    E('h3', null, [ '设置', E('a', { href:'#', class:'x', 'aria-label':'关闭设置' }, ['关闭']) ])
+  ]));
+  document.getElementById('panel').querySelector('.x').addEventListener('click', function(ev){
+    ev.preventDefault(); togglePanel(false);
+  });
+
+  if(window.__DEBUG){
+    document.body.appendChild(E('div', { id:'dbg' }, [
+      E('h3', null, ['调试面板（?debug=1）', E('a', { href:'#', class:'x' }, ['关闭'])])
+    ]));
+    document.getElementById('dbg').querySelector('.x').addEventListener('click', function(ev){
+      ev.preventDefault(); document.getElementById('dbg').classList.add('hide');
+    });
+  }
+}
+
+function togglePanel(force){
+  const p = document.getElementById('panel');
+  const show = force === undefined ? p.classList.contains('hide') : force;
+  if(!show){
+    p.classList.add('hide');
+    p.setAttribute('aria-hidden', 'true');
+    return;
+  }
+  p.classList.remove('hide');
+  p.setAttribute('aria-hidden', 'false');
+  renderPanel();
+}
+
+function renderPanel(){
+  const p = document.getElementById('panel');
+  /* 保留标题行 */
+  while(p.children.length > 1) p.removeChild(p.lastChild);
+  const u = State.ui;
+  function chk(label, key, note){
+    const id = 'ui-' + key;
+    const input = E('input', { type:'checkbox', id:id });
+    input.checked = !!u[key];
+    input.addEventListener('change', function(){
+      u[key] = input.checked; applyUI(); State.save();
+    });
+    return E('div', { class:'row' }, [input, E('label', { for:id, style:'display:inline;margin-left:4px' }, [label]),
+      note ? E('div', { class:'tiny dim', style:'margin-left:20px' }, [note]) : null]);
+  }
+  p.appendChild(E('h3', null, ['显示']));
+  const fs = E('select', { 'aria-label':'字号' }, [
+    E('option', { value:'' }, ['正常']),
+    E('option', { value:'l' }, ['大一点']),
+    E('option', { value:'xl' }, ['更大'])
+  ]);
+  fs.value = u.fs || '';
+  fs.addEventListener('change', function(){ u.fs = fs.value; applyUI(); State.save(); });
+  p.appendChild(E('div', { class:'row' }, ['字号：', fs]));
+  p.appendChild(chk('关闭闪烁效果', 'flash'));
+  p.appendChild(chk('关闭动画', 'anim'));
+  p.appendChild(chk('高对比（黑字白底）', 'contrast'));
+
+  p.appendChild(E('h3', null, ['声音']));
+  p.appendChild(chk('开启声音', 'sound', '默认关闭。所有声音都能用文字代替。'));
+
+  p.appendChild(E('h3', null, ['存档']));
+  p.appendChild(E('div', { class:'tagbar' }, [
+    '翻过的页面：' + State.count() + ' 个　来过：' + State.visitCount + ' 次'
+  ]));
+  const rs = E('button', { class:'btn', style:'margin-top:6px' }, ['重新开始']);
+  rs.addEventListener('click', function(){
+    if(!confirm('清掉所有记录，从头开始？')) return;
+    State.reset(); State.visitCount = 1; State.firstSeen = todayStr();
+    togglePanel(false);
+    go('/'); render();
+  });
+  p.appendChild(rs);
+
+  p.appendChild(E('h3', null, ['关于这个站']));
+  p.appendChild(E('div', { class:'tiny dim' }, [
+    '所有内容都存在这一个网页文件里，离线也能看。',
+    E('br'), '站上不做任何网络请求，不读你的浏览记录、位置、摄像头或麦克风。',
+    E('br'), '设置只存在你自己的浏览器里。'
+  ]));
+}
+
+/* ---------------- 站内搜索 ---------------- */
+function toggleSearch(){
+  const old = document.getElementById('searchwrap');
+  if(old){ old.remove(); return; }
+  const main = document.getElementById('main');
+  const w = E('div', { id:'searchwrap', class:'sbox' }, []);
+  const input = E('input', { type:'text', placeholder:'站内搜索：找个词试试', 'aria-label':'站内搜索' });
+  const btn = E('button', { class:'btn', style:'margin-left:6px' }, ['搜']);
+  const out = E('div', { class:'sres' }, []);
+  function run(){
+    const q = input.value.trim();
+    if(!q) return;
+    if(State.searches.indexOf(q) < 0) State.searches.push(q);
+    State.save();
+    renderResults(out, q);
+  }
+  btn.addEventListener('click', run);
+  input.addEventListener('keydown', function(ev){ if(ev.key === 'Enter') run(); });
+  w.appendChild(input); w.appendChild(btn); w.appendChild(out);
+  main.insertBefore(w, main.firstChild);
+  input.focus();
+}
+function renderResults(out, q){
+  out.innerHTML = '';
+  const r = search(q);
+  out.appendChild(E('div', { class:'small dim' }, [
+    '找到 ' + r.total + ' 条' + (r.deleted ? '（其中 ' + r.deleted + ' 条已删除）' : '')
+  ]));
+  if(!r.total){
+    out.appendChild(E('div', { class:'small' }, [
+      '没有。',
+      E('br'),
+      '本站很多东西早就删了，搜不到很正常。'
+    ]));
+    return;
+  }
+  r.hits.slice(0, 30).forEach(function(h){
+    const box = E('div', { class:'sitem' }, []);
+    const t = E('div', { class:'st' }, []);
+    if(h.del){
+      t.appendChild(E('del', null, [h.title]));
+    } else {
+      const a = E('a', { href:'#' + h.path.replace(/^\//,'').replace(/#/,'?j=') }, [h.title]);
+      a.addEventListener('click', function(ev){ ev.preventDefault(); jumpTo(h); });
+      t.appendChild(a);
+    }
+    box.appendChild(t);
+    box.appendChild(E('div', { class:'su' }, [h.where + '　' + (h.d || '') + '　' + h.path]));
+    box.appendChild(E('div', { class:'sx' }, [String(h.text).slice(0, 88) + (String(h.text).length > 88 ? '…' : '')]));
+    out.appendChild(box);
+  });
+}
+
+/* 跳到搜索命中的位置 */
+function jumpTo(h){
+  if(h.kind === 'diary'){
+    const e = DIARY.filter(function(x){ return x.id === h.id; })[0];
+    if(e && e.del){
+      go('/archive/2009/diary/'); return;
+    }
+    go('/diary/', { m:e.d.slice(0,4) + '-' + e.d.slice(5,7), j:e.id });
+    return;
+  }
+  if(h.kind === 'guest'){
+    const pid = h.id.split('-m')[0];
+    go(currentPathOf(pid));
+    setTimeout(function(){ scrollToId(h.id); }, 70);
+    return;
+  }
+  if(h.kind === 'photo'){ go('photoOld'); scrollLater(h.path.split('#')[1]); return; }
+  if(h.kind === 'music'){ go(h.page || 'music2007'); scrollLater(h.path.split('#')[1]); return; }
+  if(h.kind === 'log'){ go('log'); return; }
+  if(h.kind === 'friend'){ go('friendsOld'); return; }
+  if(h.kind === 'dl'){ go('download'); return; }
+  go('home');
+}
+
+/* ---------------- 调试面板 ---------------- */
+function renderDebug(){
+  const d = document.getElementById('dbg');
+  if(!d) return;
+  while(d.children.length > 1) d.removeChild(d.lastChild);
+  const id = render.pageId || '?';
+  const pg = PAGES[id] || {};
+  d.appendChild(sect('当前页面', [
+    'id: ' + id,
+    'title: ' + (pg.title || '?'),
+    'kind: ' + (pg.kind || '?') + '   era: ' + (pg.era || '?'),
+    'path: ' + currentPathOf(id),
+    'hash: ' + location.hash
+  ]));
+  d.appendChild(sect('状态', [
+    '翻过页面: ' + State.count(),
+    '本次会话次数: ' + State.visitCount,
+    '首次: ' + State.firstSeen,
+    '搜过: ' + (State.searches.join(' / ') || '（无）'),
+    '自己输入的路径: ' + (State.foundRoutes.join(' ') || '（无）')
+  ]));
+  d.appendChild(sect('已解锁 / 线索', Object.keys(State.flags).map(function(k){
+    return k + ': ' + State.flags[k];
+  })));
+  d.appendChild(sect('已访问页面', Object.keys(State.visited).sort().join(' ')));
+  d.appendChild(sect('索引条目', [String(SEARCH_INDEX.length) + ' 条']));
+  d.appendChild(sect('跳转历史', State.historyLog.slice(-14).map(function(h){ return h.id; })));
+  d.appendChild(sect('音频', ['enabled: ' + Audio_.enabled, 'playing: ' + (Audio_.playing || '-')]));
+  d.appendChild(sect('错误日志', ERRORS.length ? ERRORS.slice(-8).map(function(e){ return e.m; }) : ['（无）']));
+}
+function scrollToId(id){
+  const el = document.getElementById(id);
+  if(el) el.scrollIntoView();
+}
+function scrollLater(id){ if(id) setTimeout(function(){ scrollToId(id); }, 70); }
+
+function sect(title, lines){
+  const box = E('div', null, []);
+  box.appendChild(E('h3', null, [title]));
+  const pre = E('pre', null, []);
+  lines.forEach(function(l){ pre.appendChild(document.createTextNode(l + '\n')); });
+  box.appendChild(pre);
+  return box;
+}
+
+/* ---------------- URL 输入（网络考古的主要动作）---------------- */
+/* 用真实 input 而不是 prompt：更像浏览器的地址栏行为，也更好做无障碍 */
+function buildOmnibox(){
+  const bar = E('div', { id:'omni', class:'small', style:'padding:6px 1px 0' }, []);
+  const lab = E('label', { for:'omniinput', class:'dim' }, ['地址：']);
+  const inp = E('input', {
+    type:'text', id:'omniinput', 'aria-label':'输入网址路径',
+    placeholder:'#/' + currentPathOf('home').replace(/^\//,''),
+    style:'font-family:Consolas,monospace;font-size:.95em;width:52%;max-width:300px;' +
+          'border:1px solid var(--line);background:#fff;color:#000;padding:2px 5px'
+  });
+  const btn = E('button', { class:'btn', style:'margin-left:5px' }, ['前往']);
+  function run(){
+    const v = inp.value.trim();
+    if(!v) return;
+    go(v, null, true);       /* isUserTyped=true → 记进"自己走到过的" */
+    inp.value = '';
+  }
+  btn.addEventListener('click', run);
+  inp.addEventListener('keydown', function(ev){ if(ev.key === 'Enter') run(); });
+  bar.appendChild(lab); bar.appendChild(inp); bar.appendChild(btn);
+  const crumb = document.getElementById('crumb');
+  crumb.parentNode.insertBefore(bar, crumb);
+}
+
+/* ---------------- 启动 ---------------- */
+function boot(){
+  buildChrome();
+  buildOmnibox();
+  window.addEventListener('hashchange', render);
+  applyUI();
+
+  /* 首次打开：显示首页 2007，并记一次访问 */
+  if(!location.hash && !new URLSearchParams(location.search).get('p')){
+    location.replace(location.pathname + '#/home');
+  }
+  render();
+
+  /* 键盘：按 / 聚焦搜索，Esc 关闭面板 */
+  document.addEventListener('keydown', function(ev){
+    if(ev.key === '/' && !/^(INPUT|TEXTAREA|SELECT)$/.test(document.activeElement.tagName)){
+      ev.preventDefault(); toggleSearch();
+    }
+    if(ev.key === 'Escape'){ togglePanel(false); closeViewer(); }
+  });
+
+  /* 声音只在玩家点了开关或点了播放之后才会响 —— 绝不自动播放 */
+  document.addEventListener('click', function once(){
+    Audio_.init();
+    document.removeEventListener('click', once);
+  });
+}
+
+if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot);
+else boot();
+
+})();
+</script>
+</body>
+</html>
